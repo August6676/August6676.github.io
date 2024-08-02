@@ -4,6 +4,25 @@
   
   
   <entry>
+    <title>Useful instructions in Linux</title>
+    <link href="/2024/08/01/Useful-instructions-in-Linux/"/>
+    <url>/2024/08/01/Useful-instructions-in-Linux/</url>
+    
+    <content type="html"><![CDATA[<p>这是第一次正经使用远程服务器跑数据，遂记录一下常用的命令，希望以后会越来越熟练！🤗</p><ul><li>查看显卡情况  <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs shell">nvidia-smi<br></code></pre></td></tr></table></figure></li></ul>]]></content>
+    
+    
+    
+    <tags>
+      
+      <tag>Linux</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
     <title>hello_pig</title>
     <link href="/2024/07/30/hello-pig/"/>
     <url>/2024/07/30/hello-pig/</url>
