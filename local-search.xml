@@ -36,6 +36,12 @@
     <content type="html"><![CDATA[<p>这是第一次正经使用远程服务器跑数据，遂记录一下常用的命令，希望以后会越来越熟练！🤗</p><ul><li>查看显卡情况  <figure><div class="code-wrapper"><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">nvidia-smi<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre></div></figure></li></ul>]]></content>
     
     
+    <categories>
+      
+      <category>Research Basic</category>
+      
+    </categories>
+    
     
     <tags>
       
