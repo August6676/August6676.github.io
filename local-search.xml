@@ -8,9 +8,21 @@
     <link href="/2024/08/02/Pycharm%E5%A6%82%E4%BD%95%E8%BF%9E%E6%8E%A5%E8%BF%9C%E7%A8%8B%E6%9C%8D%E5%8A%A1%E5%99%A8/"/>
     <url>/2024/08/02/Pycharm%E5%A6%82%E4%BD%95%E8%BF%9E%E6%8E%A5%E8%BF%9C%E7%A8%8B%E6%9C%8D%E5%8A%A1%E5%99%A8/</url>
     
-    <content type="html"><![CDATA[<p>在实习，旁边的小伙伴全都劝我用vscode，说连接简单不费力，我这样一个忠诚的pycharm用户，JetBrains全家桶爱好者，怎么能受得了这样的虎狼之词！😡😡<br>于是，写下一篇博文，记录一下如何使用pycharm连接远程服务器。</p><blockquote><p>attention💡:我这次远程连接的时候，没有参考任何网上教程；pycharm版本：PyCharm 2023.2.2</p></blockquote><h3 id="Step1：新建一个项目"><a href="#Step1：新建一个项目" class="headerlink" title="Step1：新建一个项目"></a>Step1：新建一个项目</h3><p>新建一个项目，选择Python解释器，选择<code>Previously configured interpreter</code>，然后点击<code>Add Interpreter</code>，选择<code>On SSh</code>，如下图所示：<br><img src="/../img/img_img1.png" alt="img.png"><br>在这儿，填写服务器的ip地址（Host），端口号（往往默认），用户名，如下图所示：<br><img src="/../img/img_1.png" alt="img_1.png"><br>之后能点击next的，一路点击next，直到下图，输入密码（这里我使用的是密码连接），之后还是点击next，如下图：<br><img src="/../img/img_2.png" alt="img_2.png"><br>还是next：<br><img src="/../img/img_3.png" alt="img_3.png"><br>ok，现在来到第四步：<br><img src="/../img/img_4.png" alt="img_4.png"><br>在这里，我想要使用服务器中已经存在的环境，于是我选择<code>existing</code>,选择虚拟环境中对应的<code>python.exe</code>,往往在<code>Anaconda3</code>中的<code>envs</code>的虚拟环境名字下的<code>bin</code>中，选好了点击ok，然后点击create，如下图：<br><img src="/../img/img_5.png" alt="img_5.png"><br>之后注意选一下相匹配的文件夹，也就是你的这个项目中的文件，应该上传到服务器中的文件夹中的什么位置：<br><img src="/../img/img_10.png" alt="img_10.png"><br>这样就创建项目成功啦！</p><h3 id="Step2：浏览服务器上的文件夹"><a href="#Step2：浏览服务器上的文件夹" class="headerlink" title="Step2：浏览服务器上的文件夹"></a>Step2：浏览服务器上的文件夹</h3><p>在项目创建成功后，点击<code>Main Menu</code>（就是左上角三条线的图标），之后点击同行的<code>tools</code>-&gt;<code>deployment</code>-&gt;<code>Browse Remote Host</code>，如下图：<br><img src="/../img/img_6.png" alt="img_6.png"><br>之后在pycharm最左侧就会出代表现服务器上的文件夹的标志，选择对应的远程主机，就可以看到展开的文件夹啦：<br><img src="/../img/img_8.png" alt="img_8.png"></p><h3 id="Step3：终端修改"><a href="#Step3：终端修改" class="headerlink" title="Step3：终端修改"></a>Step3：终端修改</h3><p>注意在使用远程服务器的时候，我们往往是在终端操作，点击终端，注意<code>+</code>号旁边的小箭头，点击这个小箭头，选择对应的虚拟环境即可，如下图：<br><img src="/../img/img_9.png" alt="img_9.png"><br>这样，终端也切换到远程服务器的虚拟环境啦！It’s done!</p>]]></content>
+    <content type="html"><![CDATA[<p>在实习，旁边的小伙伴全都劝我用vscode，说连接简单不费力，我这样一个忠诚的pycharm用户，JetBrains全家桶爱好者，怎么能受得了这样的虎狼之词！😡😡<br>于是，写下一篇博文，记录一下如何使用pycharm连接远程服务器。</p><div class="note note-warning">            <p>该远程连接步骤没有参考任何网上教程；pycharm版本：PyCharm 2023.2.2<br>pycharm连接远程服务器有很多种方法，或者某一步骤错误了其实有很多补救措施，可以自行探索！☺️</p>          </div><h3 id="Step1：新建一个项目"><a href="#Step1：新建一个项目" class="headerlink" title="Step1：新建一个项目"></a>Step1：新建一个项目</h3><p>新建一个项目，选择Python解释器，选择<code>Previously configured interpreter</code>，然后点击<code>Add Interpreter</code>，选择<code>On SSh</code>，如下图所示：<br><img src="/../img/img_img1.png" alt="img.png"><br>在这儿，填写服务器的ip地址（Host），端口号（往往默认），用户名，如下图所示：<br><img src="/../img/img_1.png" alt="img_1.png"><br>之后能点击next的，一路点击next，直到下图，输入密码（这里我使用的是密码连接），之后还是点击next，如下图：<br><img src="/../img/img_2.png" alt="img_2.png"><br>还是next：<br><img src="/../img/img_3.png" alt="img_3.png"><br>ok，现在来到第四步：<br><img src="/../img/img_4.png" alt="img_4.png"><br>在这里，我想要使用服务器中已经存在的环境，于是我选择<code>existing</code>,选择虚拟环境中对应的<code>python.exe</code>,往往在<code>Anaconda3</code>中的<code>envs</code>的虚拟环境名字下的<code>bin</code>中，选好了点击ok，然后点击create，如下图：<br><img src="/../img/img_5.png" alt="img_5.png"><br>之后注意选一下相匹配的文件夹，也就是你的这个项目中的文件，应该上传到服务器中的文件夹中的什么位置：<br><img src="/../img/img_10.png" alt="img_10.png"><br>这样就创建项目成功啦！</p><h3 id="Step2：浏览服务器上的文件夹"><a href="#Step2：浏览服务器上的文件夹" class="headerlink" title="Step2：浏览服务器上的文件夹"></a>Step2：浏览服务器上的文件夹</h3><p>在项目创建成功后，点击<code>Main Menu</code>（就是左上角三条线的图标），之后点击同行的<code>tools</code>-&gt;<code>deployment</code>-&gt;<code>Browse Remote Host</code>，如下图：<br><img src="/../img/img_6.png" alt="img_6.png"><br>之后在pycharm最左侧就会出代表现服务器上的文件夹的标志，选择对应的远程主机，就可以看到展开的文件夹啦：<br><img src="/../img/img_8.png" alt="img_8.png"></p><h3 id="Step3：终端修改"><a href="#Step3：终端修改" class="headerlink" title="Step3：终端修改"></a>Step3：终端修改</h3><p>注意在使用远程服务器的时候，我们往往是在终端操作，点击终端，注意<code>+</code>号旁边的小箭头，点击这个小箭头，选择对应的虚拟环境即可，如下图：<br><img src="/../img/img_9.png" alt="img_9.png"><br>这样，终端也切换到远程服务器的虚拟环境啦！It’s done!</p>]]></content>
     
     
+    <categories>
+      
+      <category>Research Basic</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>Pycharm</tag>
+      
+    </tags>
     
   </entry>
   
@@ -30,19 +42,6 @@
       <tag>Linux</tag>
       
     </tags>
-    
-  </entry>
-  
-  
-  
-  <entry>
-    <title>Hello World</title>
-    <link href="/2024/07/30/hello-world/"/>
-    <url>/2024/07/30/hello-world/</url>
-    
-    <content type="html"><![CDATA[<p>Welcome to <a href="https://hexo.io/">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p><h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure><div class="code-wrapper"><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">$ hexo new <span class="token string">"My New Post"</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre></div></figure><p>More info: <a href="https://hexo.io/docs/writing.html">Writing</a></p><h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure><div class="code-wrapper"><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">$ hexo server<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre></div></figure><p>More info: <a href="https://hexo.io/docs/server.html">Server</a></p><h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure><div class="code-wrapper"><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">$ hexo generate<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre></div></figure><p>More info: <a href="https://hexo.io/docs/generating.html">Generating</a></p><h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure><div class="code-wrapper"><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">$ hexo deploy<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre></div></figure><p>More info: <a href="https://hexo.io/docs/one-command-deployment.html">Deployment</a></p>]]></content>
-    
-    
     
   </entry>
   
