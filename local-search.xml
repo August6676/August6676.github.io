@@ -4,6 +4,31 @@
   
   
   <entry>
+    <title>useful code</title>
+    <link href="/2024/08/22/code/"/>
+    <url>/2024/08/22/code/</url>
+    
+    <content type="html"><![CDATA[<p>在这里记录下有用的代码，也是提醒自己在跑实验的时候不要只关注于代码正确了，实验跑通了，深入理解代码细节！持续更新中📚…</p><ol><li><figure><div class="code-wrapper"><pre><code class="python"> os.environ[&quot;CUDA_VISIBLE_DEVICES&quot;] = 0,1,2,3 # 设置可见的GPU设备 os.environ[&quot;CUDA_VISIBLE_DEVICES&quot;] = gpu_ids</code></pre></div></figure><ul><li><strong>指定GPU</strong>：通过设置 <code>CUDA_VISIBLE_DEVICES</code> 环境变量，可以指定哪些GPU可供程序使用。例如，如果有4个GPU（编号为 0, 1, 2, 3），但只希望程序使用GPU 2和GPU 3，你可以设置<code>gpu_ids = &quot;2,3&quot;</code>，这样程序运行时只会看到这两个GPU。</li><li><strong>屏蔽GPU</strong>：如果不希望程序使用任何GPU，可以将<code>gpu_ids</code>设置为空字符串，即<code>gpu_ids = &quot;&quot;</code>。这会使得程序无法看到任何GPU，从而只使用CPU。</li></ul><p>attention:这行代码实际上只是告诉程序哪些GPU是可见的或可用的，但它并不保证程序一定会使用这些GPU中的所有GPU。</p></li></ol>]]></content>
+    
+    
+    <categories>
+      
+      <category>Research Basic</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>python</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
     <title>本地主机连接远程服务器的几种方式</title>
     <link href="/2024/08/13/%E6%9C%AC%E5%9C%B0%E4%B8%BB%E6%9C%BA%E8%BF%9E%E6%8E%A5%E8%BF%9C%E7%A8%8B%E6%9C%8D%E5%8A%A1%E5%99%A8%E7%9A%84%E5%87%A0%E7%A7%8D%E6%96%B9%E5%BC%8F/"/>
     <url>/2024/08/13/%E6%9C%AC%E5%9C%B0%E4%B8%BB%E6%9C%BA%E8%BF%9E%E6%8E%A5%E8%BF%9C%E7%A8%8B%E6%9C%8D%E5%8A%A1%E5%99%A8%E7%9A%84%E5%87%A0%E7%A7%8D%E6%96%B9%E5%BC%8F/</url>
