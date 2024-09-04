@@ -4,6 +4,33 @@
   
   
   <entry>
+    <title>Basic Knowledge for Domain Generalization</title>
+    <link href="/2024/09/04/Generalization/"/>
+    <url>/2024/09/04/Generalization/</url>
+    
+    <content type="html"><![CDATA[<p>🌞🌞有幸接触到一个做域泛化的项目组，在准备期间看论文发现自己机器学习、深度学习的基础其实一点都不扎实🥹🥹，在这里记录一下跟进项目需要用到的知识点！</p><h3 id="域迁移-Domain-Adaptation-VS-域泛化-Domain-Generalization"><a href="#域迁移-Domain-Adaptation-VS-域泛化-Domain-Generalization" class="headerlink" title="域迁移[Domain Adaptation] VS 域泛化[Domain Generalization]"></a><strong>域迁移[Domain Adaptation]</strong> VS <strong>域泛化[Domain Generalization]</strong></h3><p>以一个具体的场景为例： 假设我在开发一个自动驾驶系统，它需要识别街道上的行人。我在A城市收集了大量的行人图像（源领域），我的目标是把这个系统应用到B城市，但是B城市的街道布局、行人穿着、天气条件等可能与A有所不同，这就是所谓的“领域偏移”（domain shift）。</p><ul><li><strong>Domain Adaptation:</strong> 在训练的过程中，就给模型提供B城市的图像，虽然这些图像可能没有标注过，但是我的目标是让模型利用这些未标注的目标领域数据，调整自己对新环境的适应性。</li><li><strong>Domain Generalization:</strong> 在训练过程中，我并不提供B城市的图像，而模型在使用的过程中，也可以识别出B城市的行人。</li></ul><p>总结来说：<strong>域迁移</strong>是通过使用一些目标领域的数据来帮助模型适应新环境，而<strong>域泛化</strong>则要求模型在没有看到目标领域数据的情况下，依然能够应对新的环境。</p><h3 id="元学习-Meta-Learning"><a href="#元学习-Meta-Learning" class="headerlink" title="元学习[Meta Learning]"></a>元学习[Meta Learning]</h3><p>Meta-learning，也称为“学习如何学习”，是一种机器学习方法，旨在通过学习元知识（即关于学习过程本身的知识）来提高模型在新任务上的表现。Meta-learning的目标是使模型能够快速适应新任务，即使在只有少量训练数据的情况下，也能取得良好的效果。</p><blockquote><p>(夹带点私货，下面这个elegant的图，是用mermaid绘制出来的，useful!🤩🤩欸，但是大小不好调整呢)</p></blockquote><div style="height: 10%; margin: auto;"><pre><code class="mermaid">%%&#123; init: &#123; "theme": "base", "themeVariables": &#123; "width": "300px", "height": "500px" &#125;&#125;&#125;%%graph TD    A[Meta-Learning] --> B[Meta-Training Phase]    A --> C[Meta-Testing Phase]    B --> D[Meta-Training Data]    B --> E[Meta-Validation Data]    D --> F[Meta-Train Task 1]    D --> G[Meta-Train Task 2]    D --> H[Meta-Train Task N]    E --> I[Meta-Validation Task 1]    E --> J[Meta-Validation Task 2]    E --> K[Meta-Validation Task N]    C --> L[Meta-Testing Data]    L --> M[Meta-Test Task]subgraph Task_StructureF --> N[Support Set N-way K-shot]F --> O[Query Set]G --> NG --> OH --> NH --> OM --> NM --> Oend</code></pre></div>]]></content>
+    
+    
+    <categories>
+      
+      <category>Research Basic</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>Machine Learning</tag>
+      
+      <tag>Deep Learning</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
     <title>useful code</title>
     <link href="/2024/08/22/code/"/>
     <url>/2024/08/22/code/</url>
