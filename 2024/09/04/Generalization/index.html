@@ -28,7 +28,7 @@
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://imgbed.yiyunt.cn/img/43">
 <meta property="article:published_time" content="2024-09-04T13:09:01.000Z">
-<meta property="article:modified_time" content="2024-09-04T14:10:28.226Z">
+<meta property="article:modified_time" content="2024-09-10T06:40:46.728Z">
 <meta property="article:author" content="Xiaoxuan Zhou">
 <meta property="article:tag" content="Machine Learning">
 <meta property="article:tag" content="Deep Learning">
@@ -253,7 +253,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          565 字
+          607 字
         
       </span>
     
@@ -264,7 +264,7 @@
         
         
         
-          5 分钟
+          6 分钟
         
       </span>
     
@@ -315,7 +315,7 @@
               <p id="updated-time" class="note note-info" style="display: none">
                 
                   
-                    本文最后更新于 2024-09-04T22:10:28+08:00
+                    本文最后更新于 2024-09-10T14:40:46+08:00
                   
                   
 
@@ -332,14 +332,13 @@
 <li><strong>Domain Generalization:</strong> 在训练过程中，我并不提供B城市的图像，而模型在使用的过程中，也可以识别出B城市的行人。</li>
 </ul>
 <p>总结来说：<strong>域迁移</strong>是通过使用一些目标领域的数据来帮助模型适应新环境，而<strong>域泛化</strong>则要求模型在没有看到目标领域数据的情况下，依然能够应对新的环境。</p>
-<h3 id="元学习-Meta-Learning"><a href="#元学习-Meta-Learning" class="headerlink" title="元学习[Meta Learning]"></a>元学习[Meta Learning]</h3><p>Meta-learning，也称为“学习如何学习”，是一种机器学习方法，旨在通过学习元知识（即关于学习过程本身的知识）来提高模型在新任务上的表现。Meta-learning的目标是使模型能够快速适应新任务，即使在只有少量训练数据的情况下，也能取得良好的效果。</p>
+<h3 id="元学习-Meta-Learning"><a href="#元学习-Meta-Learning" class="headerlink" title="元学习[Meta Learning]"></a>元学习[Meta Learning]</h3><p>Meta-learning，也称为“学习如何学习”，是一种机器学习方法，旨在通过学习元知识（即关于学习过程本身的知识）来提高模型在新任务上的表现。Meta-learning的目标是使模型能够快速适应新任务，即使在只有少量训练数据的情况下，也能取得良好的效果。元学习的核心想法是学习一个先验知识 (prior)。</p>
 <blockquote>
-<p>(夹带点私货，下面这个elegant的图，是用mermaid绘制出来的，useful!🤩🤩欸，但是大小不好调整呢)</p>
+<p>(夹带点私货，下面这个elegant的图，是用mermaid绘制出来的，useful!🤩🤩欸，但是大小不好调整，而且多次尝试都失败了，😢sad)</p>
 </blockquote>
-<div style="height: 10%; margin: auto;">
-
-<pre><code class="mermaid">%%&#123; init: &#123; "theme": "base", "themeVariables": &#123; "width": "300px", "height": "500px" &#125;&#125;&#125;%%
-graph TD
+<p><strong>元学习的内容细分</strong></p>
+<pre><code class="mermaid">%%&#123; init: &#123; "theme": "base", "themeVariables": &#123; "width": "300px", "height": "300px" &#125;&#125;&#125;%%
+graph LR
     A[Meta-Learning] --> B[Meta-Training Phase]
     A --> C[Meta-Testing Phase]
 
@@ -368,7 +367,7 @@ M --> N
 M --> O
 end</code></pre>
 
-</div>
+<p><strong>元学习的流程</strong></p>
 
                 
               </div>
