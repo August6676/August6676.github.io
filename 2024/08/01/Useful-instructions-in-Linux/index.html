@@ -19,12 +19,12 @@
   <meta name="author" content="Xiaoxuan Zhou">
   <meta name="keywords" content="">
   
-    <meta name="description" content="这是第一次正经使用远程服务器跑数据，遂记录一下常用的命令，希望以后会越来越熟练！🤗  查看显卡情况  1️⃣ 简易版  nvidia-smi 2️⃣ 更详细更美观🤩  pip install nvitop nvitop   nvitop的效果确实更美观，包括进程也展示的更加清楚：   查看虚拟环境列表   conda env list  多人共享一个服务器，GPU资源稀缺的时候，需要进行占卡操">
+    <meta name="description" content="这是第一次正经使用远程服务器跑数据，遂记录一下常用的命令，希望以后会越来越熟练！🤗  查看显卡情况  1️⃣ 简易版  1nvidia-smi 2️⃣ 更详细更美观🤩  12pip install nvitopnvitop   nvitop的效果确实更美观，包括进程也展示的更加清楚：   查看虚拟环境列表   1conda env list  多人共享一个服务器，GPU资源稀缺的时候，需要进行">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Useful instructions in Linux">
 <meta property="og:url" content="https://august6676.github.io/2024/08/01/Useful-instructions-in-Linux/index.html">
 <meta property="og:site_name" content="Echo&#39;s Blog🐱">
-<meta property="og:description" content="这是第一次正经使用远程服务器跑数据，遂记录一下常用的命令，希望以后会越来越熟练！🤗  查看显卡情况  1️⃣ 简易版  nvidia-smi 2️⃣ 更详细更美观🤩  pip install nvitop nvitop   nvitop的效果确实更美观，包括进程也展示的更加清楚：   查看虚拟环境列表   conda env list  多人共享一个服务器，GPU资源稀缺的时候，需要进行占卡操">
+<meta property="og:description" content="这是第一次正经使用远程服务器跑数据，遂记录一下常用的命令，希望以后会越来越熟练！🤗  查看显卡情况  1️⃣ 简易版  1nvidia-smi 2️⃣ 更详细更美观🤩  12pip install nvitopnvitop   nvitop的效果确实更美观，包括进程也展示的更加清楚：   查看虚拟环境列表   1conda env list  多人共享一个服务器，GPU资源稀缺的时候，需要进行">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://t.tutu.to/img/UHUNz">
 <meta property="article:published_time" content="2024-08-01T02:05:23.000Z">
@@ -45,8 +45,6 @@
   <link  rel="stylesheet" href="https://lib.baomitu.com/github-markdown-css/4.0.0/github-markdown.min.css" />
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
-
-  <link  rel="stylesheet" href="https://lib.baomitu.com/prism/1.29.0/plugins/line-numbers/prism-line-numbers.min.css" />
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
 
@@ -328,22 +326,19 @@
 <ul>
 <li><p>查看显卡情况</p>
 <ul>
-<li>1️⃣ 简易版  <figure><div class="code-wrapper"><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">nvidia-smi<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre></div></figure></li>
-<li>2️⃣ 更详细更美观🤩  <figure><div class="code-wrapper"><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">pip <span class="token function">install</span> nvitop
-nvitop<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre></div></figure>
+<li>1️⃣ 简易版  <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs shell">nvidia-smi<br></code></pre></td></tr></table></figure></li>
+<li>2️⃣ 更详细更美观🤩  <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs shell">pip install nvitop<br>nvitop<br></code></pre></td></tr></table></figure>
   nvitop的效果确实更美观，包括进程也展示的更加清楚：<br><img src="/../img/nvitop.jpg" srcset="/img/loading.gif" lazyload alt="nvitop效果图"></li>
 </ul>
 </li>
 <li><p>查看虚拟环境列表</p>
-  <figure><div class="code-wrapper"><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">conda <span class="token function">env</span> list<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre></div></figure>
+  <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs shell">conda env list<br></code></pre></td></tr></table></figure>
 </li>
 <li><p>多人共享一个服务器，GPU资源稀缺的时候，需要进行<strong>占卡</strong>操作，确保一个人在使用 GPU 时，其他人不会干扰或抢占该资源<br>  如何实现占卡？编写一个脚本，在脚本中执行一个死循环，这样就可以占用 GPU 资源了。例如：</p>
-  <figure><div class="code-wrapper"><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">nvidia-smi
-<span class="token builtin class-name">export</span> <span class="token assign-left variable">CUDA_VISIBLE_DEVICES</span><span class="token operator">=</span><span class="token number">0</span>  <span class="token comment"># 选择 GPU 0</span>
-python your_script.py<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre></div></figure>
+  <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs bash">nvidia-smi<br><span class="hljs-built_in">export</span> CUDA_VISIBLE_DEVICES=0  <span class="hljs-comment"># 选择 GPU 0</span><br>python your_script.py<br></code></pre></td></tr></table></figure>
 </li>
 <li><p>脱离自己的终端，继续运行脚本，我常常使用的指令是<code>nohup</code>，例如：</p>
-  <figure><div class="code-wrapper"><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">nohup</span> python your_script.py <span class="token operator">></span> stdout.log <span class="token operator"><span class="token file-descriptor important">2</span>></span><span class="token file-descriptor important">&amp;1</span> <span class="token operator">&amp;</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre></div></figure>
+  <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-built_in">nohup</span> python your_script.py &gt; stdout.log 2&gt;&amp;1 &amp;<br></code></pre></td></tr></table></figure>
 <p>这个指令用于在后台运行一个Python脚本，同时将输出重定向到日志文件中。具体来说：</p>
 <ul>
 <li><code>nohup</code>：表示“no hang up”，用于在你关闭终端后继续运行该命令。通常，如果没有使用<code>nohup</code>，关闭终端后，正在运行的进程也会被终止。使用nohup可以确保即使关闭了终端，脚本仍然会继续运行。</li>
@@ -355,12 +350,11 @@ python your_script.py<span aria-hidden="true" class="line-numbers-rows"><span></
 </ul>
 </li>
 <li><p>赋予自己的脚本权限，例如：</p>
-<figure><div class="code-wrapper"><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">chmod</span> +x your_script.py<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre></div></figure>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs shell">chmod +x your_script.py<br></code></pre></td></tr></table></figure>
 <p>使用<code>chmod</code>命令，你可以给文件赋予权限。<code>+x</code>表示增加执行权限，这样你就可以运行这个脚本了。同理，<code>-x</code>表示移除执行权限，移除之后，你无法运行这个脚本。</p>
 </li>
 <li><p>杀死进程</p>
-<figure><div class="code-wrapper"><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">kill</span> <span class="token parameter variable">-9</span> pid <span class="token comment"># pid是进程的ID, kill -9 强制终止进程</span>
-<span class="token function">kill</span> pid<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre></div></figure></li>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs shell">kill -9 pid # pid是进程的ID, kill -9 强制终止进程<br>kill pid<br></code></pre></td></tr></table></figure></li>
 <li><p>退出状态码</p>
 <ul>
 <li><strong>Exit 1</strong> 通常是脚本内的问题，需要检查日志。<br>本小菜在分批次使用nohup执行脚本时，发现脚本总是自动退出，退出状态码为1。后来寻找发现是自己的bash文件多了一行空行，实际上是多了换行符，导致脚本无法执行🥲🥲。</li>
@@ -368,7 +362,7 @@ python your_script.py<span aria-hidden="true" class="line-numbers-rows"><span></
 </ul>
 </li>
 <li><p>查看文件夹下有多少文件</p>
-<figure><div class="code-wrapper"><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">ls</span> <span class="token parameter variable">-1</span> /path/to/directory <span class="token operator">|</span> <span class="token function">wc</span> <span class="token parameter variable">-l</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre></div></figure>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs shell">ls -1 /path/to/directory | wc -l<br></code></pre></td></tr></table></figure>
 <ul>
 <li><code>ls -1</code> 列出目录中的每个文件和文件夹，每行显示一个名称。</li>
 <li><code>wc -l</code> 统计行数，即文件和文件夹的数量。</li>
@@ -379,8 +373,7 @@ python your_script.py<span aria-hidden="true" class="line-numbers-rows"><span></
             <p>注意，在每次执行下载命令的时候都要<code>export HF ENDPOINT=https://hf-mirror.com</code>，要不然下载速度会巨慢无比😑</p>
           </div></li>
 <li><p>查看当前的python进程</p>
-<figure><div class="code-wrapper"><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">ps</span> <span class="token parameter variable">-ef</span> <span class="token operator">|</span> <span class="token function">grep</span> python 
-<span class="token function">ps</span> <span class="token parameter variable">-aux</span> <span class="token operator">|</span> <span class="token function">grep</span> python<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre></div></figure>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs shell">ps -ef | grep python <br>ps -aux | grep python<br></code></pre></td></tr></table></figure>
 <ul>
 <li><p><code>ps -ef</code> 显示的是更传统的 Unix 风格的输出，注重进程间的关系（如父子进程关系）以及命令的详细信息。例子如下所示：<br><img src="/../img/ef.png" srcset="/img/loading.gif" lazyload alt="ef.png"></p>
 </li>
@@ -397,7 +390,7 @@ python your_script.py<span aria-hidden="true" class="line-numbers-rows"><span></
 </ul>
 </li>
 <li><p>查看当前机器的内存空间</p>
-<figure><div class="code-wrapper"><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">free</span> <span class="token parameter variable">-h</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre></div></figure>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs shell">free -h<br></code></pre></td></tr></table></figure>
 <p>效果如下图所示：<br><a target="_blank" rel="noopener" href="https://img.picui.cn/free/2024/08/20/66c437b30e9c4.png"><img src="https://img.picui.cn/free/2024/08/20/66c437b30e9c4.png" srcset="/img/loading.gif" lazyload alt="free.png"></a></p>
 </li>
 </ul>
@@ -792,8 +785,6 @@ python your_script.py<span aria-hidden="true" class="line-numbers-rows"><span></
   });
 </script>
 
-
-  <script  src="https://lib.baomitu.com/prism/1.29.0/plugins/line-numbers/prism-line-numbers.min.js" ></script>
 
   <script src=https://lib.baomitu.com/clipboard.js/2.0.11/clipboard.min.js></script>
 

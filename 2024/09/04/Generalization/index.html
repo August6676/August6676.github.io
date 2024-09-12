@@ -28,7 +28,7 @@
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://imgbed.yiyunt.cn/img/43">
 <meta property="article:published_time" content="2024-09-04T13:09:01.000Z">
-<meta property="article:modified_time" content="2024-09-10T06:40:46.728Z">
+<meta property="article:modified_time" content="2024-09-12T02:55:10.728Z">
 <meta property="article:author" content="Xiaoxuan Zhou">
 <meta property="article:tag" content="Machine Learning">
 <meta property="article:tag" content="Deep Learning">
@@ -46,8 +46,6 @@
   <link  rel="stylesheet" href="https://lib.baomitu.com/github-markdown-css/4.0.0/github-markdown.min.css" />
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
-
-  <link  rel="stylesheet" href="https://lib.baomitu.com/prism/1.29.0/plugins/line-numbers/prism-line-numbers.min.css" />
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
 
@@ -253,7 +251,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          607 字
+          641 字
         
       </span>
     
@@ -315,7 +313,7 @@
               <p id="updated-time" class="note note-info" style="display: none">
                 
                   
-                    本文最后更新于 2024-09-10T14:40:46+08:00
+                    本文最后更新于 2024-09-12T10:55:10+08:00
                   
                   
 
@@ -337,35 +335,36 @@
 <p>(夹带点私货，下面这个elegant的图，是用mermaid绘制出来的，useful!🤩🤩欸，但是大小不好调整，而且多次尝试都失败了，😢sad)</p>
 </blockquote>
 <p><strong>元学习的内容细分</strong></p>
-<pre><code class="mermaid">%%&#123; init: &#123; "theme": "base", "themeVariables": &#123; "width": "300px", "height": "300px" &#125;&#125;&#125;%%
+<pre><code class=" mermaid">%%&#123; init: &#123; &quot;theme&quot;: &quot;base&quot;, &quot;themeVariables&quot;: &#123; &quot;width&quot;: &quot;300px&quot;, &quot;height&quot;: &quot;300px&quot; &#125;&#125;&#125;%%
 graph LR
-    A[Meta-Learning] --> B[Meta-Training Phase]
-    A --> C[Meta-Testing Phase]
+    A[Meta-Learning] --&gt; B[Meta-Training Phase]
+    A --&gt; C[Meta-Testing Phase]
 
-    B --> D[Meta-Training Data]
-    B --> E[Meta-Validation Data]
+    B --&gt; D[Meta-Training Data]
+    B --&gt; E[Meta-Validation Data]
 
-    D --> F[Meta-Train Task 1]
-    D --> G[Meta-Train Task 2]
-    D --> H[Meta-Train Task N]
+    D --&gt; F[Meta-Train Task 1]
+    D --&gt; G[Meta-Train Task 2]
+    D --&gt; H[Meta-Train Task N]
 
-    E --> I[Meta-Validation Task 1]
-    E --> J[Meta-Validation Task 2]
-    E --> K[Meta-Validation Task N]
+    E --&gt; I[Meta-Validation Task 1]
+    E --&gt; J[Meta-Validation Task 2]
+    E --&gt; K[Meta-Validation Task N]
 
-    C --> L[Meta-Testing Data]
-    L --> M[Meta-Test Task]
+    C --&gt; L[Meta-Testing Data]
+    L --&gt; M[Meta-Test Task]
 
 subgraph Task_Structure
-F --> N[Support Set N-way K-shot]
-F --> O[Query Set]
-G --> N
-G --> O
-H --> N
-H --> O
-M --> N
-M --> O
-end</code></pre>
+F --&gt; N[Support Set N-way K-shot]
+F --&gt; O[Query Set]
+G --&gt; N
+G --&gt; O
+H --&gt; N
+H --&gt; O
+M --&gt; N
+M --&gt; O
+end
+</code></pre>
 
 <p><strong>元学习的流程</strong></p>
 
@@ -767,8 +766,6 @@ end</code></pre>
   });
 </script>
 
-
-  <script  src="https://lib.baomitu.com/prism/1.29.0/plugins/line-numbers/prism-line-numbers.min.js" ></script>
 
   <script src=https://lib.baomitu.com/clipboard.js/2.0.11/clipboard.min.js></script>
 
