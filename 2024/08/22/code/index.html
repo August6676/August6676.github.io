@@ -19,16 +19,16 @@
   <meta name="author" content="Xiaoxuan Zhou">
   <meta name="keywords" content="">
   
-    <meta name="description" content="在这里记录下有用的代码，也是提醒自己在跑实验的时候不要只关注于代码正确了，实验跑通了，深入理解代码细节！持续更新中📚… 设置可见GPU123import osos.environ[&quot;CUDA_VISIBLE_DEVICES&quot;] &#x3D; gpu_idsgpu_ids &#x3D; &#x27;0&#x27;  指定GPU：通过设置 CUDA_VISIBLE_DEVICES 环境变量，可以指定">
+    <meta name="description" content="在这里记录下有用的代码，有来自实验常用的，也有oj需要用的，oj是小白水平🥺 Python (mainly for Research)设置可见GPU123import osos.environ[&quot;CUDA_VISIBLE_DEVICES&quot;] &#x3D; gpu_idsgpu_ids &#x3D; &#x27;0&#x27;  指定GPU：通过设置 CUDA_VISIBLE_DEVICES 环境">
 <meta property="og:type" content="article">
 <meta property="og:title" content="useful code">
 <meta property="og:url" content="https://august6676.github.io/2024/08/22/code/index.html">
 <meta property="og:site_name" content="Echo&#39;s Blog🐱">
-<meta property="og:description" content="在这里记录下有用的代码，也是提醒自己在跑实验的时候不要只关注于代码正确了，实验跑通了，深入理解代码细节！持续更新中📚… 设置可见GPU123import osos.environ[&quot;CUDA_VISIBLE_DEVICES&quot;] &#x3D; gpu_idsgpu_ids &#x3D; &#x27;0&#x27;  指定GPU：通过设置 CUDA_VISIBLE_DEVICES 环境变量，可以指定">
+<meta property="og:description" content="在这里记录下有用的代码，有来自实验常用的，也有oj需要用的，oj是小白水平🥺 Python (mainly for Research)设置可见GPU123import osos.environ[&quot;CUDA_VISIBLE_DEVICES&quot;] &#x3D; gpu_idsgpu_ids &#x3D; &#x27;0&#x27;  指定GPU：通过设置 CUDA_VISIBLE_DEVICES 环境">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://img.picgo.net/2024/09/21/cloud-coding1c9553690a35738d.png">
 <meta property="article:published_time" content="2024-08-22T11:06:18.000Z">
-<meta property="article:modified_time" content="2024-09-21T04:06:38.037Z">
+<meta property="article:modified_time" content="2024-09-21T08:22:54.971Z">
 <meta property="article:author" content="Xiaoxuan Zhou">
 <meta property="article:tag" content="python">
 <meta name="twitter:card" content="summary_large_image">
@@ -250,7 +250,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          234 字
+          319 字
         
       </span>
     
@@ -261,7 +261,7 @@
         
         
         
-          2 分钟
+          3 分钟
         
       </span>
     
@@ -312,7 +312,7 @@
               <p id="updated-time" class="note note-info" style="display: none">
                 
                   
-                    本文最后更新于 2024-09-21T12:06:38+08:00
+                    本文最后更新于 2024-09-21T16:22:54+08:00
                   
                   
 
@@ -322,14 +322,16 @@
             
               <div class="markdown-body">
                 
-                <p>在这里记录下有用的代码，也是提醒自己在跑实验的时候不要只关注于代码正确了，实验跑通了，深入理解代码细节！持续更新中📚…</p>
-<h3 id="设置可见GPU"><a href="#设置可见GPU" class="headerlink" title="设置可见GPU"></a>设置可见GPU</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">import</span> os<br>os.environ[<span class="hljs-string">&quot;CUDA_VISIBLE_DEVICES&quot;</span>] = gpu_ids<br>gpu_ids = <span class="hljs-string">&#x27;0&#x27;</span><br></code></pre></td></tr></table></figure>
+                <p>在这里记录下有用的代码，有来自实验常用的，也有oj需要用的，oj是小白水平🥺</p>
+<h2 id="Python-mainly-for-Research"><a href="#Python-mainly-for-Research" class="headerlink" title="Python (mainly for Research)"></a>Python (mainly for Research)</h2><h3 id="设置可见GPU"><a href="#设置可见GPU" class="headerlink" title="设置可见GPU"></a>设置可见GPU</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">import</span> os<br>os.environ[<span class="hljs-string">&quot;CUDA_VISIBLE_DEVICES&quot;</span>] = gpu_ids<br>gpu_ids = <span class="hljs-string">&#x27;0&#x27;</span><br></code></pre></td></tr></table></figure>
 <ul>
 <li><strong>指定GPU</strong>：通过设置 <code>CUDA_VISIBLE_DEVICES</code> 环境变量，可以指定哪些GPU可供程序使用。例如，如果有4个GPU（编号为 0, 1, 2, 3），但只希望程序使用GPU 2和GPU 3，你可以设置<code>gpu_ids = &quot;2,3&quot;</code>，这样程序运行时只会看到这两个GPU。</li>
 <li><strong>屏蔽GPU</strong>：如果不希望程序使用任何GPU，可以将<code>gpu_ids</code>设置为空字符串，即<code>gpu_ids = &quot;&quot;</code>。这会使得程序无法看到任何GPU，从而只使用CPU。</li>
 </ul>
 <p><strong>attention:</strong> 这行代码实际上只是告诉程序哪些GPU是可见的或可用的，但它并不保证程序一定会使用这些GPU中的所有GPU。</p>
+<h2 id="C-mainly-for-Online-Judge"><a href="#C-mainly-for-Online-Judge" class="headerlink" title="C++ (mainly for Online Judge)"></a>C++ (mainly for Online Judge)</h2><h3 id="数位分离"><a href="#数位分离" class="headerlink" title="数位分离"></a>数位分离</h3><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-comment">// 来自快乐数</span><br><span class="hljs-function"><span class="hljs-type">int</span> <span class="hljs-title">square_sum</span><span class="hljs-params">(<span class="hljs-type">int</span> n)</span> </span>&#123;<br>    <span class="hljs-type">int</span> sum = <span class="hljs-number">0</span>;<br>    <span class="hljs-keyword">while</span> (n != <span class="hljs-number">0</span> ) &#123;<br>        <span class="hljs-type">int</span> digit = n % <span class="hljs-number">10</span>;<br>        n /= <span class="hljs-number">10</span>;<br>        sum += digit * digit;<br>    &#125;<br>    <span class="hljs-keyword">return</span> sum;<br>&#125;<br></code></pre></td></tr></table></figure>
 
+<h3 id="创建链表"><a href="#创建链表" class="headerlink" title="创建链表"></a>创建链表</h3><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;iostream&gt;</span></span><br><span class="hljs-keyword">using</span> namesapce std;<br><span class="hljs-function"><span class="hljs-type">int</span> <span class="hljs-title">main</span> <span class="hljs-params">()</span> </span>&#123;<br>    <span class="hljs-type">int</span> n;<br>    cout &lt;&lt; <span class="hljs-string">&quot;Enter the number of elements: &quot;</span>;<br>    cin &gt;&gt; n;<br>    ListNode* head = <span class="hljs-literal">nullptr</span>;<br>    ListNode pnode = <span class="hljs-literal">nullptr</span>;<br>    cout &lt;&lt; <span class="hljs-string">&quot;Enter the elements: &quot;</span>;<br>    <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> i = <span class="hljs-number">0</span>; i &lt; n; i++) &#123;<br>        <span class="hljs-type">int</span> val;<br>        cin &gt;&gt; val;<br>        <span class="hljs-keyword">if</span> (i == <span class="hljs-number">0</span>) &#123;<br>            head = <span class="hljs-keyword">new</span> <span class="hljs-built_in">ListNode</span>(val);<br>            pnode = head;<br>        &#125; <span class="hljs-keyword">else</span> &#123;<br>            ListNode* newNode = <span class="hljs-keyword">new</span> <span class="hljs-built_in">ListNode</span>(val);<br>            pnode-&gt;next = newNode;<br>            pnode = newNode;<br>        &#125;<br>    &#125;<br>&#125;<br><br></code></pre></td></tr></table></figure>
                 
               </div>
             
