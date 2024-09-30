@@ -346,6 +346,39 @@
 <h4 id="计算二叉树的深度"><a href="#计算二叉树的深度" class="headerlink" title="计算二叉树的深度"></a>计算二叉树的深度</h4><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-function"><span class="hljs-type">int</span> <span class="hljs-title">maxDepth</span><span class="hljs-params">(TreeNode* root)</span> </span>&#123;<br>   <span class="hljs-keyword">if</span> (root == <span class="hljs-literal">nullptr</span>) <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;<br>   <span class="hljs-keyword">return</span> <span class="hljs-built_in">max</span>(<span class="hljs-built_in">maxDepth</span>(root-&gt;left), <span class="hljs-built_in">maxDepth</span>(root-&gt;right)) + <span class="hljs-number">1</span>; <br>&#125;<br></code></pre></td></tr></table></figure>
                 
               </div>
+<!--              <div class="like-button">-->
+<!--                <button id="like-btn">👍 点赞</button>-->
+<!--                <span id="like-count">0</span>-->
+<!--              </div>-->
+
+<!--              <style>-->
+<!--                .like-button {-->
+<!--                  display: flex;-->
+<!--                  align-items: center;-->
+<!--                  margin: 10px 0;-->
+<!--                }-->
+
+<!--                #like-btn {-->
+<!--                  background-color: #e4e6fc; /* 绿色背景 */-->
+<!--                  color: white; /* 白色文字 */-->
+<!--                  border: none; /* 无边框 */-->
+<!--                  padding: 10px 15px; /* 上下和左右内边距 */-->
+<!--                  border-radius: 5px; /* 圆角 */-->
+<!--                  cursor: pointer; /* 鼠标悬停时指针变为手形 */-->
+<!--                  transition: background-color 0.3s; /* 背景色变化的过渡效果 */-->
+<!--                }-->
+
+<!--                #like-btn:hover {-->
+<!--                  background-color: rgba(125, 27, 216, 0.68); /* 悬停时颜色变化 */-->
+<!--                }-->
+
+<!--                #like-count {-->
+<!--                  margin-left: 10px; /* 左侧间距 */-->
+<!--                  font-size: 18px; /* 字体大小 */-->
+<!--                  color: #333; /* 字体颜色 */-->
+<!--                }-->
+<!--              </style>-->
+
             
             <hr/>
             <div>
@@ -449,6 +482,16 @@
                         <i class="iconfont icon-arrowright"></i>
                       </a>
                     
+                    <script>
+                      let likeCount = 0;
+
+                      document.getElementById('like-btn').addEventListener('click', function() {
+                        likeCount++;
+                        document.getElementById('like-count').innerText = likeCount;
+                        // 这里可以添加AJAX请求，将点赞数发送到服务器
+                      });
+                    </script>
+
                   </article>
                 </div>
               
