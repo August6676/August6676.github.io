@@ -7,7 +7,7 @@
 
 <head>
   <meta charset="UTF-8">
-  <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@300..700&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Serif:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
   <link rel="apple-touch-icon" sizes="76x76" href="https://img.picui.cn/free/2024/08/20/66c4377dce4c7.png">
   <link rel="icon" href="https://img.picui.cn/free/2024/08/20/66c4377dce4c7.png">
   
@@ -486,12 +486,15 @@
   <div id="valine"></div>
   <script type="text/javascript">
     Fluid.utils.loadComments('#valine', function() {
-      Fluid.utils.createScript('https://lib.baomitu.com/valine/1.5.1/Valine.min.js', function() {
+      Fluid.utils.createScript('https://cdn.jsdelivr.net/gh/HCLonely/Valine@latest/dist/Valine.min.js', function() {
         var options = Object.assign(
-          {"appId":"rpvAYvLWHKfl1pdGeQdBJX4v-MdYXbMMI","appKey":"WQtD3HLj2ihVKc1xDUFLziN2","path":"window.location.pathname","placeholder":"发表你的意见吧❤️‍🔥","avatar":"retro","meta":["nick","mail","link"],"requiredFields":[],"pageSize":10,"lang":"zh-CN","highlight":true,"recordIP":true,"serverURLs":"https://rpvayvlw.api.lncldglobal.com","emojiCDN":null,"emojiMaps":null,"enableQQ":true,"like":true},
+          {"appId":"rpvAYvLWHKfl1pdGeQdBJX4v-MdYXbMMI","appKey":"WQtD3HLj2ihVKc1xDUFLziN2","path":"window.location.pathname","placeholder":"发表你的意见吧❤️‍🔥","avatar":"wavatar","meta":["nick","mail","link"],"requiredFields":[],"pageSize":10,"lang":"zh-CN","highlight":true,"recordIP":true,"serverURLs":"https://rpvayvlw.api.lncldglobal.com","emojiCDN":null,"emojiMaps":null,"enableQQ":true,"master":"4859836D5A6C56B24B69364036E62E0B","friends":"1F24A80FDE24FC5AB5A712E7C0FD1370,E6FA1222D4174F20BBD0D86CBCB3E436","like":true},
           {
             el: "#valine",
-            path: window.location.pathname
+            path: window.location.pathname,
+            master: "4859836D5A6C56B24B69364036E62E0B",
+            friends: "1F24A80FDE24FC5AB5A712E7C0FD1370,E6FA1222D4174F20BBD0D86CBCB3E436",
+            tagMeta: ["博主","友人","访客"],
           }
         )
         new Valine(options);
