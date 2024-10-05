@@ -28,7 +28,7 @@
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://img.picgo.net/2024/09/21/cloud-coding1c9553690a35738d.png">
 <meta property="article:published_time" content="2024-08-22T11:06:18.000Z">
-<meta property="article:modified_time" content="2024-10-05T13:03:50.614Z">
+<meta property="article:modified_time" content="2024-10-05T13:25:57.768Z">
 <meta property="article:author" content="Xiaoxuan Zhou">
 <meta property="article:tag" content="python">
 <meta property="article:tag" content="cpp">
@@ -251,7 +251,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          738 字
+          726 字
         
       </span>
     
@@ -313,7 +313,7 @@
               <p id="updated-time" class="note note-info" style="display: none">
                 
                   
-                    本文最后更新于 2024-10-05T21:03:50+08:00
+                    本文最后更新于 2024-10-05T21:25:57+08:00
                   
                   
 
@@ -344,9 +344,9 @@
 <li>递归实现 <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-function"><span class="hljs-type">void</span> <span class="hljs-title">inorder</span><span class="hljs-params">(TreeNode* root,vector&lt;<span class="hljs-type">int</span>&gt;&amp; res)</span> </span>&#123;<br>    <span class="hljs-keyword">if</span> (root == <span class="hljs-literal">nullptr</span>)  <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;<br>    <span class="hljs-built_in">inorder</span>(root-&gt;left);<br>    res.<span class="hljs-built_in">push_back</span>(root-&gt;val);<br>    <span class="hljs-built_in">inorder</span>(root-&gt;right);<br>    &#125;<br><br><span class="hljs-function"><span class="hljs-type">int</span> <span class="hljs-title">inorderTraversal</span><span class="hljs-params">(TreeNode* root)</span> </span>&#123;<br>    vector&lt;<span class="hljs-type">int</span>&gt; res;<br>    <span class="hljs-built_in">inorder</span>(root, res);<br>    <span class="hljs-keyword">return</span> res;<br>&#125;<br></code></pre></td></tr></table></figure></li>
 <li>迭代实现 <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><code class="hljs cpp"> <span class="hljs-function">vector&lt;<span class="hljs-type">int</span>&gt; <span class="hljs-title">inorderTraversal</span><span class="hljs-params">(TreeNode* root)</span> </span>&#123;<br> vector&lt;<span class="hljs-type">int</span>&gt; res;<br> stack&lt;TreeNode*&gt; stk;<br> <span class="hljs-keyword">while</span> (root != <span class="hljs-literal">nullptr</span> || !stk.<span class="hljs-built_in">empty</span>()) &#123;<br>     <span class="hljs-keyword">while</span> (root != <span class="hljs-literal">nullptr</span>) &#123;<br>     stk.<span class="hljs-built_in">push</span>(root);<br>     root = root-&gt;left;<br>    &#125;<br>     root = stk.<span class="hljs-built_in">top</span>();<br>     stk.<span class="hljs-built_in">pop</span>();<br>     res.<span class="hljs-built_in">push_back</span>(root-&gt;val);<br>     root = root-&gt;right;<br>  &#125;<br><span class="hljs-keyword">return</span> res;<br>&#125;<br></code></pre></td></tr></table></figure></li>
 </ol>
-<h4 id="计算二叉树的深度"><a href="#计算二叉树的深度" class="headerlink" title="计算二叉树的深度"></a>计算二叉树的深度</h4><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-function"><span class="hljs-type">int</span> <span class="hljs-title">maxDepth</span><span class="hljs-params">(TreeNode* root)</span> </span>&#123;<br>   <span class="hljs-keyword">if</span> (root == <span class="hljs-literal">nullptr</span>) <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;<br>   <span class="hljs-keyword">return</span> <span class="hljs-built_in">max</span>(<span class="hljs-built_in">maxDepth</span>(root-&gt;left), <span class="hljs-built_in">maxDepth</span>(root-&gt;right)) + <span class="hljs-number">1</span>; <br>&#125;<br></code></pre></td></tr></table></figure>
+<h4 id="Calculate-the-depth-of-the-binary-tree"><a href="#Calculate-the-depth-of-the-binary-tree" class="headerlink" title="Calculate the depth of the binary tree"></a>Calculate the depth of the binary tree</h4><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-function"><span class="hljs-type">int</span> <span class="hljs-title">maxDepth</span><span class="hljs-params">(TreeNode* root)</span> </span>&#123;<br>   <span class="hljs-keyword">if</span> (root == <span class="hljs-literal">nullptr</span>) <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;<br>   <span class="hljs-keyword">return</span> <span class="hljs-built_in">max</span>(<span class="hljs-built_in">maxDepth</span>(root-&gt;left), <span class="hljs-built_in">maxDepth</span>(root-&gt;right)) + <span class="hljs-number">1</span>; <br>&#125;<br></code></pre></td></tr></table></figure>
 
-<h4 id="遍历哈希表"><a href="#遍历哈希表" class="headerlink" title="遍历哈希表"></a>遍历哈希表</h4><p>哈希表有两种遍历方式，范围for循环和迭代器。</p>
+<h4 id="Traverse-the-hash-table"><a href="#Traverse-the-hash-table" class="headerlink" title="Traverse the hash table"></a>Traverse the hash table</h4><p>哈希表有两种遍历方式，范围for循环和迭代器。</p>
 <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-keyword">for</span> (<span class="hljs-keyword">auto</span> it = mp.<span class="hljs-built_in">begin</span>(); it != mp.<span class="hljs-built_in">end</span>(); ++it) &#123;<br>   it-&gt;first; <span class="hljs-comment">// key</span><br>   it-&gt;second; <span class="hljs-comment">// value</span><br>   <span class="hljs-comment">// other code</span><br>   &#125;<br><span class="hljs-keyword">for</span> (<span class="hljs-keyword">auto</span>&amp; [key, value] : mp) &#123;<br>   <span class="hljs-comment">// other code</span><br>   &#125;<br></code></pre></td></tr></table></figure>
                 
               </div>
