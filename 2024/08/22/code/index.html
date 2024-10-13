@@ -28,7 +28,7 @@
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://img.picgo.net/2024/09/21/cloud-coding1c9553690a35738d.png">
 <meta property="article:published_time" content="2024-08-22T11:06:18.000Z">
-<meta property="article:modified_time" content="2024-10-12T03:43:30.287Z">
+<meta property="article:modified_time" content="2024-10-13T03:29:54.305Z">
 <meta property="article:author" content="Xiaoxuan Zhou">
 <meta property="article:tag" content="python">
 <meta property="article:tag" content="cpp">
@@ -255,7 +255,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          882 字
+          1.1k 字
         
       </span>
     
@@ -266,7 +266,7 @@
         
         
         
-          8 分钟
+          9 分钟
         
       </span>
     
@@ -317,7 +317,7 @@
               <p id="updated-time" class="note note-info" style="display: none">
                 
                   
-                    本文最后更新于 2024-10-12T11:43:30+08:00
+                    本文最后更新于 2024-10-13T11:29:54+08:00
                   
                   
 
@@ -346,7 +346,14 @@
 <p>回过头来意识到我这个问题好幼稚，犯的错好傻呀…🫥🫥</p>
 <h4 id="reverse-array"><a href="#reverse-array" class="headerlink" title="reverse array"></a>reverse array</h4><p>包含在<code>algorithm</code>头文件中，可以通过<code>reverse(begin, end)</code>函数实现数组的翻转。<br>注意，<code>begin()</code>和<code>end()</code>函数返回的迭代器是左闭右开的，也就是说，<code>begin()</code>指向第一个元素，而<code>end()</code>指向<strong>最后一个元素的下一个位置</strong>。</p>
 <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;vector&gt;</span></span><br><span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;algorithm&gt;</span></span><br><br>vector&lt;<span class="hljs-type">int</span>&gt; v = &#123;<span class="hljs-number">1</span>, <span class="hljs-number">2</span>, <span class="hljs-number">3</span>, <span class="hljs-number">4</span>, <span class="hljs-number">5</span>&#125;;<br><span class="hljs-built_in">reverse</span>(v.<span class="hljs-built_in">begin</span>(), v.<span class="hljs-built_in">end</span>()); <span class="hljs-comment">// 翻转数组</span><br><span class="hljs-built_in">reverse</span>(v.<span class="hljs-built_in">begin</span>(), v.<span class="hljs-built_in">begin</span>() + <span class="hljs-number">4</span>); <span class="hljs-comment">// 翻转转从第 0 个元素开始到第 3 个元素</span><br></code></pre></td></tr></table></figure>
-
+<h4 id="accumulate-vector"><a href="#accumulate-vector" class="headerlink" title="accumulate vector"></a>accumulate vector</h4><p><code>accumulate</code>是C++标准库中的一个函数，用于计算范围内所有元素的累计和。它通常用于容器（如vector、array等）中的元素累计。<code>accumulate</code>函数位于<code>&lt;numeric&gt;</code>头文件中。</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-keyword">template</span> &lt;<span class="hljs-keyword">class</span> <span class="hljs-title class_">InputIterator</span>, <span class="hljs-keyword">class</span> <span class="hljs-title class_">T</span>&gt;<br><span class="hljs-function">T <span class="hljs-title">accumulate</span><span class="hljs-params">(InputIterator first, InputIterator last, T init)</span></span>;<br><br></code></pre></td></tr></table></figure>
+<ul>
+<li><code>first</code>：输入序列的起始迭代器（指向序列的第一个元素）。</li>
+<li><code>last</code>：输入序列的结束迭代器（指向序列的最后一个元素的后一个位置）。</li>
+<li><code>init</code>：累加的初始值，这个值会作为累加计算的起点。累加后的结果将基于这个初始值。</li>
+</ul>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;vector&gt;</span></span><br><span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;numeric&gt;</span>  <span class="hljs-comment">// accumulate 所在的头文件</span></span><br><span class="hljs-keyword">using</span> <span class="hljs-keyword">namespace</span> std;<br><span class="hljs-comment">// 使用 accumulate 计算 nums 中所有元素的和，初始值为 0</span><br><span class="hljs-type">int</span> total = <span class="hljs-built_in">accumulate</span>(nums.<span class="hljs-built_in">begin</span>(), nums.<span class="hljs-built_in">end</span>(), <span class="hljs-number">0</span>);<br></code></pre></td></tr></table></figure>
 <h3 id="About-Binary-Tree"><a href="#About-Binary-Tree" class="headerlink" title="About Binary Tree"></a>About Binary Tree</h3><h4 id="中序遍历"><a href="#中序遍历" class="headerlink" title="中序遍历"></a>中序遍历</h4><ol>
 <li>递归实现 <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-function"><span class="hljs-type">void</span> <span class="hljs-title">inorder</span><span class="hljs-params">(TreeNode* root,vector&lt;<span class="hljs-type">int</span>&gt;&amp; res)</span> </span>&#123;<br>    <span class="hljs-keyword">if</span> (root == <span class="hljs-literal">nullptr</span>)  <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;<br>    <span class="hljs-built_in">inorder</span>(root-&gt;left);<br>    res.<span class="hljs-built_in">push_back</span>(root-&gt;val);<br>    <span class="hljs-built_in">inorder</span>(root-&gt;right);<br>    &#125;<br><br><span class="hljs-function"><span class="hljs-type">int</span> <span class="hljs-title">inorderTraversal</span><span class="hljs-params">(TreeNode* root)</span> </span>&#123;<br>    vector&lt;<span class="hljs-type">int</span>&gt; res;<br>    <span class="hljs-built_in">inorder</span>(root, res);<br>    <span class="hljs-keyword">return</span> res;<br>&#125;<br></code></pre></td></tr></table></figure></li>
 <li>迭代实现 <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><code class="hljs cpp"> <span class="hljs-function">vector&lt;<span class="hljs-type">int</span>&gt; <span class="hljs-title">inorderTraversal</span><span class="hljs-params">(TreeNode* root)</span> </span>&#123;<br> vector&lt;<span class="hljs-type">int</span>&gt; res;<br> stack&lt;TreeNode*&gt; stk;<br> <span class="hljs-keyword">while</span> (root != <span class="hljs-literal">nullptr</span> || !stk.<span class="hljs-built_in">empty</span>()) &#123;<br>     <span class="hljs-keyword">while</span> (root != <span class="hljs-literal">nullptr</span>) &#123;<br>     stk.<span class="hljs-built_in">push</span>(root);<br>     root = root-&gt;left;<br>    &#125;<br>     root = stk.<span class="hljs-built_in">top</span>();<br>     stk.<span class="hljs-built_in">pop</span>();<br>     res.<span class="hljs-built_in">push_back</span>(root-&gt;val);<br>     root = root-&gt;right;<br>  &#125;<br><span class="hljs-keyword">return</span> res;<br>&#125;<br></code></pre></td></tr></table></figure></li>
