@@ -19,12 +19,12 @@
   <meta name="author" content="Xiaoxuan Zhou">
   <meta name="keywords" content="">
   
-    <meta name="description" content="很久之前就下载了Docker，但是因为种种原因一直搁置，也没有学习，今天一起来学一学吧~😄😄 Docker介绍Docker是一个开源平台，允许开发者打包、分发和运行应用程序容器，使用容器来隔离应用程序和以来项，使得应用能够在不同环境中一致运行。 在和Skyee聊天的时候，她说她用的是Docker Compose，这是一个工具，使得用户可以一次性启动、停止和管理多个Docker容器，而不需要单独">
+    <meta name="description" content="很久之前就下载了Docker，但是因为种种原因一直搁置，也没有学习，今天一起来学一学吧~😄😄 ## Docker介绍 Docker是一个开源平台，允许开发者打包、分发和运行应用程序容器，使用容器来隔离应用程序和以来项，使得应用能够在不同环境中一致运行。 在和Skyee聊天的时候，她说她用的是Docker Compose，这是一个工具，使得用户可以一次性启动、停止和管理多个Docker容">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Docker学习">
 <meta property="og:url" content="https://august6676.github.io/2024/09/30/Docker%E5%AD%A6%E4%B9%A0/index.html">
 <meta property="og:site_name" content="Echo&#39;s Blog🐱">
-<meta property="og:description" content="很久之前就下载了Docker，但是因为种种原因一直搁置，也没有学习，今天一起来学一学吧~😄😄 Docker介绍Docker是一个开源平台，允许开发者打包、分发和运行应用程序容器，使用容器来隔离应用程序和以来项，使得应用能够在不同环境中一致运行。 在和Skyee聊天的时候，她说她用的是Docker Compose，这是一个工具，使得用户可以一次性启动、停止和管理多个Docker容器，而不需要单独">
+<meta property="og:description" content="很久之前就下载了Docker，但是因为种种原因一直搁置，也没有学习，今天一起来学一学吧~😄😄 ## Docker介绍 Docker是一个开源平台，允许开发者打包、分发和运行应用程序容器，使用容器来隔离应用程序和以来项，使得应用能够在不同环境中一致运行。 在和Skyee聊天的时候，她说她用的是Docker Compose，这是一个工具，使得用户可以一次性启动、停止和管理多个Docker容">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://logos-world.net/wp-content/uploads/2021/02/Docker-Symbol.png">
 <meta property="article:published_time" content="2024-09-30T11:32:19.000Z">
@@ -254,7 +254,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          956 字
+          964 字
         
       </span>
     
@@ -265,7 +265,7 @@
         
         
         
-          8 分钟
+          9 分钟
         
       </span>
     
@@ -326,55 +326,87 @@
             
               <div class="markdown-body">
                 
-                <p>很久之前就下载了Docker，但是因为种种原因一直搁置，也没有学习，今天一起来学一学吧~😄😄</p>
-<h2 id="Docker介绍"><a href="#Docker介绍" class="headerlink" title="Docker介绍"></a>Docker介绍</h2><p><strong>Docker</strong>是一个开源平台，允许开发者打包、分发和运行应用程序<strong>容器</strong>，使用<strong>容器</strong>来隔离应用程序和以来项，使得应用能够在不同环境中一致运行。</p>
-<p>在和Skyee聊天的时候，她说她用的是<strong>Docker Compose</strong>，这是一个工具，使得用户可以一次性启动、停止和管理多个Docker容器，而不需要单独管理每个容器，具体内容没有详细看，在这里先以Docker为主！</p>
-<h2 id="重要概念"><a href="#重要概念" class="headerlink" title="重要概念"></a>重要概念</h2><ul>
-<li><strong>镜像(Image)</strong>: 镜像是一个只读的模板，用于创建<strong>容器</strong>，可以从<strong>Docker Hub</strong>等公共库中下载，也可以通过<strong>Dockerfile</strong>自定义构建。比方说我从Docker Hub下载的Centos、Ubuntu等都称为镜像。</li>
-<li><strong>容器(Container)</strong>: 容器是<strong>镜像</strong>的运行实例，可以启动、停止、删除，是一个轻量级的、独立的可执行环境。</li>
-<li><strong>仓库(Repository)</strong>: 仓库是<strong>镜像</strong>的存储库，可以上传、下载镜像，也可以自定义镜像。可以是本地的，也可以是<strong>Docker Hub</strong>等公共库。</li>
-<li><strong>Dockerfile</strong>: Dockerfile是一个文本文件，用于定义如何构建镜像，用户使用dockerfile自定义镜像。</li>
-</ul>
-<p>模仿着画了一张图，展示容器和镜像的关系：<br><img src="https://ice.frostsky.com/2024/09/30/67cf83690f2e153549870e881e07aab9.png" srcset="/img/loading.gif" lazyload alt="Docker学习-容器和镜像的关系"><br>在这个图中，更细致地指出了Docker镜像是由多个只读层组成的，容器是在镜像之上启动的，会在镜像之上创建一个可读写层，容器的更改都发生在这一层，不会影响下面的只读层。</p>
-<h2 id="常用命令"><a href="#常用命令" class="headerlink" title="常用命令"></a>常用命令</h2><h3 id="设置镜像"><a href="#设置镜像" class="headerlink" title="设置镜像"></a>设置镜像</h3><p>在国内使用Docker时，需要设置镜像源，不然会很慢，但是我配置了镜像源之后还是偶尔出现超时错误，或许和我开启了VPN有关，不过总而言之还是需要设置镜像源。<br>我使用的Docker Desktop，在settings -&gt; Docker Engine中添加如下内容：</p>
-<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs json"><span class="hljs-punctuation">&#123;</span><br>  <span class="hljs-attr">&quot;registry-mirrors&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">[</span><br>    <span class="hljs-string">&quot;https://docker.mirrors.ustc.edu.cn&quot;</span><span class="hljs-punctuation">,</span><br>    <span class="hljs-string">&quot;https://hub-mirror.c.163.com&quot;</span><span class="hljs-punctuation">,</span><br>    <span class="hljs-string">&quot;https://mirror.baidubce.com&quot;</span><br>  <span class="hljs-punctuation">]</span><br><span class="hljs-punctuation">&#125;</span><br></code></pre></td></tr></table></figure>
-<h3 id="下载镜像"><a href="#下载镜像" class="headerlink" title="下载镜像"></a>下载镜像</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs bash">docker pull &lt;image&gt;<br>docker pull &lt;image&gt;:&lt;tag&gt;<br><span class="hljs-comment"># 示例</span><br>docker pull ubuntu:18.04<br></code></pre></td></tr></table></figure>
-<p><img src="https://ice.frostsky.com/2024/09/30/6cf6b6e18898c032c49d347f65fe5f7b.png" srcset="/img/loading.gif" lazyload alt="Docker学习-下载报错示例"><br><img src="https://ice.frostsky.com/2024/09/30/3b4db79d0d03ef2c4deb7352b5b15ba9.png" srcset="/img/loading.gif" lazyload alt="Docker学习-正常下载示例"></p>
-<h3 id="查看镜像信息"><a href="#查看镜像信息" class="headerlink" title="查看镜像信息"></a>查看镜像信息</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs bash">docker images<br>docker images &lt;image&gt;<br><span class="hljs-comment"># 示例</span><br>docker images ubuntu<br></code></pre></td></tr></table></figure>
-<p><img src="https://ice.frostsky.com/2024/09/30/0cb47e0f38d7ed863c932ae8acad4ecf.png" srcset="/img/loading.gif" lazyload alt="Docker学习-查看镜像信息"></p>
+                <p>很久之前就下载了Docker，但是因为种种原因一直搁置，也没有学习，今天一起来学一学吧~😄😄
+## Docker介绍
+<strong>Docker</strong>是一个开源平台，允许开发者打包、分发和运行应用程序<strong>容器</strong>，使用<strong>容器</strong>来隔离应用程序和以来项，使得应用能够在不同环境中一致运行。</p>
+<p>在和Skyee聊天的时候，她说她用的是<strong>Docker
+Compose</strong>，这是一个工具，使得用户可以一次性启动、停止和管理多个Docker容器，而不需要单独管理每个容器，具体内容没有详细看，在这里先以Docker为主！</p>
+<h2 id="重要概念">重要概念</h2>
 <ul>
-<li><strong>REPOSITORY</strong>: 镜像的名称，表示该镜像所属的仓库。</li>
-<li><strong>TAG</strong>: 镜像的标签，表示该镜像的版本。</li>
-<li><strong>IMAGE ID</strong>: 镜像的ID，表示该镜像的唯一标识。</li>
-<li><strong>CREATED</strong>: 镜像的创建时间。</li>
-<li><strong>SIZE</strong>: 镜像的大小，以字节为单位。</li>
+<li><strong>镜像(Image)</strong>:
+镜像是一个只读的模板，用于创建<strong>容器</strong>，可以从<strong>Docker
+Hub</strong>等公共库中下载，也可以通过<strong>Dockerfile</strong>自定义构建。比方说我从Docker
+Hub下载的Centos、Ubuntu等都称为镜像。</li>
+<li><strong>容器(Container)</strong>:
+容器是<strong>镜像</strong>的运行实例，可以启动、停止、删除，是一个轻量级的、独立的可执行环境。</li>
+<li><strong>仓库(Repository)</strong>:
+仓库是<strong>镜像</strong>的存储库，可以上传、下载镜像，也可以自定义镜像。可以是本地的，也可以是<strong>Docker
+Hub</strong>等公共库。</li>
+<li><strong>Dockerfile</strong>:
+Dockerfile是一个文本文件，用于定义如何构建镜像，用户使用dockerfile自定义镜像。</li>
 </ul>
-<h3 id="删除镜像"><a href="#删除镜像" class="headerlink" title="删除镜像"></a>删除镜像</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs bash">docker rmi &lt;image&gt;<br><span class="hljs-comment"># 示例</span><br>docker rmi ubuntu:18.04<br></code></pre></td></tr></table></figure>
+<p>模仿着画了一张图，展示容器和镜像的关系： <img
+src="https://ice.frostsky.com/2024/09/30/67cf83690f2e153549870e881e07aab9.png" srcset="/img/loading.gif" lazyload
+alt="Docker学习-容器和镜像的关系" />
+在这个图中，更细致地指出了Docker镜像是由多个只读层组成的，容器是在镜像之上启动的，会在镜像之上创建一个可读写层，容器的更改都发生在这一层，不会影响下面的只读层。</p>
+<h2 id="常用命令">常用命令</h2>
+<h3 id="设置镜像">设置镜像</h3>
+<p>在国内使用Docker时，需要设置镜像源，不然会很慢，但是我配置了镜像源之后还是偶尔出现超时错误，或许和我开启了VPN有关，不过总而言之还是需要设置镜像源。
+我使用的Docker Desktop，在settings -&gt; Docker Engine中添加如下内容：
+<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs json"><span class="hljs-punctuation">&#123;</span><br>  <span class="hljs-attr">&quot;registry-mirrors&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">[</span><br>    <span class="hljs-string">&quot;https://docker.mirrors.ustc.edu.cn&quot;</span><span class="hljs-punctuation">,</span><br>    <span class="hljs-string">&quot;https://hub-mirror.c.163.com&quot;</span><span class="hljs-punctuation">,</span><br>    <span class="hljs-string">&quot;https://mirror.baidubce.com&quot;</span><br>  <span class="hljs-punctuation">]</span><br><span class="hljs-punctuation">&#125;</span><br></code></pre></td></tr></table></figure> ### 下载镜像 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs bash">docker pull &lt;image&gt;<br>docker pull &lt;image&gt;:&lt;tag&gt;<br><span class="hljs-comment"># 示例</span><br>docker pull ubuntu:18.04<br></code></pre></td></tr></table></figure> <img
+src="https://ice.frostsky.com/2024/09/30/6cf6b6e18898c032c49d347f65fe5f7b.png" srcset="/img/loading.gif" lazyload
+alt="Docker学习-下载报错示例" /> <img
+src="https://ice.frostsky.com/2024/09/30/3b4db79d0d03ef2c4deb7352b5b15ba9.png" srcset="/img/loading.gif" lazyload
+alt="Docker学习-正常下载示例" /></p>
+<h3 id="查看镜像信息">查看镜像信息</h3>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs bash">docker images<br>docker images &lt;image&gt;<br><span class="hljs-comment"># 示例</span><br>docker images ubuntu<br></code></pre></td></tr></table></figure>
+<p><img
+src="https://ice.frostsky.com/2024/09/30/0cb47e0f38d7ed863c932ae8acad4ecf.png" srcset="/img/loading.gif" lazyload
+alt="Docker学习-查看镜像信息" /> - <strong>REPOSITORY</strong>:
+镜像的名称，表示该镜像所属的仓库。 - <strong>TAG</strong>:
+镜像的标签，表示该镜像的版本。 - <strong>IMAGE ID</strong>:
+镜像的ID，表示该镜像的唯一标识。 - <strong>CREATED</strong>:
+镜像的创建时间。 - <strong>SIZE</strong>: 镜像的大小，以字节为单位。</p>
+<h3 id="删除镜像">删除镜像</h3>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs bash">docker rmi &lt;image&gt;<br><span class="hljs-comment"># 示例</span><br>docker rmi ubuntu:18.04<br></code></pre></td></tr></table></figure>
 <p><code>docker rmi</code>命令用于删除一个或多个镜像，image参数可以是镜像的ID或者名称，多个镜像之间用空格隔开。</p>
-<h3 id="新建启动容器"><a href="#新建启动容器" class="headerlink" title="新建启动容器"></a>新建启动容器</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs bash">docker run --it --<span class="hljs-built_in">rm</span> &lt;image&gt; &lt;<span class="hljs-built_in">command</span>&gt;<br><span class="hljs-comment"># 示例</span><br>docker run --it --<span class="hljs-built_in">rm</span> ubuntu:18.04 /bin/bash<br>docker run --it --<span class="hljs-built_in">rm</span> ubuntu:18.04 /bin/bash -c <span class="hljs-string">&quot;echo hello world&quot;</span><br></code></pre></td></tr></table></figure>
+<h3 id="新建启动容器">新建启动容器</h3>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs bash">docker run --it --<span class="hljs-built_in">rm</span> &lt;image&gt; &lt;<span class="hljs-built_in">command</span>&gt;<br><span class="hljs-comment"># 示例</span><br>docker run --it --<span class="hljs-built_in">rm</span> ubuntu:18.04 /bin/bash<br>docker run --it --<span class="hljs-built_in">rm</span> ubuntu:18.04 /bin/bash -c <span class="hljs-string">&quot;echo hello world&quot;</span><br></code></pre></td></tr></table></figure>
 <ul>
-<li><strong>–it</strong>: 启动容器并进入交互式shell。</li>
-<li><strong>–rm</strong>: 退出后删除这个容器，当然没有这句话就不删除。</li>
+<li><strong>--it</strong>: 启动容器并进入交互式shell。</li>
+<li><strong>--rm</strong>:
+退出后删除这个容器，当然没有这句话就不删除。</li>
 </ul>
-<p><img src="https://ice.frostsky.com/2024/09/30/fcd20a18d1030093004d3560d6bb601d.png" srcset="/img/loading.gif" lazyload alt="Docker学习-新建容器"></p>
-<h3 id="启动和停止容器"><a href="#启动和停止容器" class="headerlink" title="启动和停止容器"></a>启动和停止容器</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs bash">docker start &lt;container&gt;<br>docker stop &lt;container&gt;<br></code></pre></td></tr></table></figure>
-<p>这里的container指容器的ID或者名称，可以通过<code>docker ps</code>命令查看。<br><img src="https://ice.frostsky.com/2024/09/30/be53fdd6929408c7e6c704ed60c3cca4.png" srcset="/img/loading.gif" lazyload alt="Docker学习-启动容器"></p>
-<ul>
-<li><strong>Container ID</strong>: 容器的ID，唯一标识符。</li>
-<li><strong>Image</strong>: 容器使用的镜像。</li>
-<li><strong>Command</strong>: 容器启动时执行的命令。</li>
-<li><strong>Status</strong>: 容器的运行状态。</li>
-<li><strong>Ports</strong>: 容器映射的端口。</li>
-<li><strong>Names</strong>: 容器的名称。</li>
-</ul>
-<h3 id="删除容器"><a href="#删除容器" class="headerlink" title="删除容器"></a>删除容器</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">docker <span class="hljs-built_in">rm</span> &lt;container&gt;<br></code></pre></td></tr></table></figure>
-<p><code>docker rm</code>命令用于删除一个或多个容器。container参数可以是容器的ID或者名称，多个容器之间用空格隔开。<br><img src="https://ice.frostsky.com/2024/09/30/d878a86dc0823c56123d2811bf3afb47.png" srcset="/img/loading.gif" lazyload alt="Docker学习-删除容器"></p>
-<h3 id="根据dockerfile创建镜像"><a href="#根据dockerfile创建镜像" class="headerlink" title="根据dockerfile创建镜像"></a>根据dockerfile创建镜像</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">docker build -t &lt;image&gt;:&lt;tag&gt; &lt;path&gt;<br></code></pre></td></tr></table></figure>
+<figure>
+<img
+src="https://ice.frostsky.com/2024/09/30/fcd20a18d1030093004d3560d6bb601d.png" srcset="/img/loading.gif" lazyload
+alt="Docker学习-新建容器" />
+<figcaption aria-hidden="true">Docker学习-新建容器</figcaption>
+</figure>
+<h3 id="启动和停止容器">启动和停止容器</h3>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs bash">docker start &lt;container&gt;<br>docker stop &lt;container&gt;<br></code></pre></td></tr></table></figure>
+<p>这里的container指容器的ID或者名称，可以通过<code>docker ps</code>命令查看。
+<img
+src="https://ice.frostsky.com/2024/09/30/be53fdd6929408c7e6c704ed60c3cca4.png" srcset="/img/loading.gif" lazyload
+alt="Docker学习-启动容器" /> - <strong>Container ID</strong>:
+容器的ID，唯一标识符。 - <strong>Image</strong>: 容器使用的镜像。 -
+<strong>Command</strong>: 容器启动时执行的命令。 -
+<strong>Status</strong>: 容器的运行状态。 - <strong>Ports</strong>:
+容器映射的端口。 - <strong>Names</strong>: 容器的名称。</p>
+<h3 id="删除容器">删除容器</h3>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">docker <span class="hljs-built_in">rm</span> &lt;container&gt;<br></code></pre></td></tr></table></figure>
+<p><code>docker rm</code>命令用于删除一个或多个容器。container参数可以是容器的ID或者名称，多个容器之间用空格隔开。
+<img
+src="https://ice.frostsky.com/2024/09/30/d878a86dc0823c56123d2811bf3afb47.png" srcset="/img/loading.gif" lazyload
+alt="Docker学习-删除容器" /></p>
+<h3 id="根据dockerfile创建镜像">根据dockerfile创建镜像</h3>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">docker build -t &lt;image&gt;:&lt;tag&gt; &lt;path&gt;<br></code></pre></td></tr></table></figure>
 <ul>
 <li><code>-t image</code>:<code>-t</code>选项用来为新创建的镜像指定一个名称<code>&lt;image_name&gt;</code></li>
 <li><code>path</code>: 表示Dockerfile所在的路径</li>
 </ul>
-<p>不过该方法还没有实现过，dockerfile也很有讲究，那就To be continued~</p>
+<p>不过该方法还没有实现过，dockerfile也很有讲究，那就To be
+continued~</p>
 
                 
               </div>
@@ -610,6 +642,12 @@
 
 
   
+
+
+  
+  
+
+
 
 
 
@@ -871,6 +909,49 @@
 
 
   <script>Fluid.plugins.imageCaption();</script>
+
+  
+      <script>
+        if (!window.MathJax) {
+          window.MathJax = {
+            tex    : {
+              inlineMath: { '[+]': [['$', '$']] }
+            },
+            loader : {
+              load: ['ui/lazy']
+            },
+            options: {
+              renderActions: {
+                insertedScript: [200, () => {
+                  document.querySelectorAll('mjx-container').forEach(node => {
+                    let target = node.parentNode;
+                    if (target.nodeName.toLowerCase() === 'li') {
+                      target.parentNode.classList.add('has-jax');
+                    }
+                  });
+                }, '', false]
+              }
+            }
+          };
+        } else {
+          MathJax.startup.document.state(0);
+          MathJax.texReset();
+          MathJax.typeset();
+          MathJax.typesetPromise();
+        }
+
+        Fluid.events.registerRefreshCallback(function() {
+          if ('MathJax' in window && MathJax.startup.document && typeof MathJax.startup.document.state === 'function') {
+            MathJax.startup.document.state(0);
+            MathJax.texReset();
+            MathJax.typeset();
+            MathJax.typesetPromise();
+          }
+        });
+      </script>
+    
+
+  <script  src="https://lib.baomitu.com/mathjax/3.2.2/es5/tex-mml-chtml.js" ></script>
 
   <script defer src="/js/leancloud.js" ></script>
 
