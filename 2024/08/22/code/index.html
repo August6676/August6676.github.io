@@ -19,16 +19,16 @@
   <meta name="author" content="Xiaoxuan Zhou">
   <meta name="keywords" content="">
   
-    <meta name="description" content="在这里记录下有用的代码，有来自实验常用的，也有oj需要用的，oj是小白水平🥺 ## Python (mainly for Research) ### 设置可见GPU ### 123import osos.environ[&quot;CUDA_VISIBLE_DEVICES&quot;] &#x3D; gpu_idsgpu_ids &#x3D; &#x27;0&#x27; - 指定GPU：通过设置 CUDA_VI">
+    <meta name="description" content="在这里记录下有用的代码，有来自实验常用的，也有oj需要用的，oj是小白水平🥺 Python (mainly for Research) 设置可见GPU 123import osos.environ[&quot;CUDA_VISIBLE_DEVICES&quot;] &#x3D; gpu_idsgpu_ids &#x3D; &#x27;0&#x27;  指定GPU：通过设置 CUDA_VISIBLE_DEV">
 <meta property="og:type" content="article">
 <meta property="og:title" content="useful code">
 <meta property="og:url" content="https://august6676.github.io/2024/08/22/code/index.html">
 <meta property="og:site_name" content="Echo&#39;s Blog🐱">
-<meta property="og:description" content="在这里记录下有用的代码，有来自实验常用的，也有oj需要用的，oj是小白水平🥺 ## Python (mainly for Research) ### 设置可见GPU ### 123import osos.environ[&quot;CUDA_VISIBLE_DEVICES&quot;] &#x3D; gpu_idsgpu_ids &#x3D; &#x27;0&#x27; - 指定GPU：通过设置 CUDA_VI">
+<meta property="og:description" content="在这里记录下有用的代码，有来自实验常用的，也有oj需要用的，oj是小白水平🥺 Python (mainly for Research) 设置可见GPU 123import osos.environ[&quot;CUDA_VISIBLE_DEVICES&quot;] &#x3D; gpu_idsgpu_ids &#x3D; &#x27;0&#x27;  指定GPU：通过设置 CUDA_VISIBLE_DEV">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://img.picgo.net/2024/09/21/cloud-coding1c9553690a35738d.png">
 <meta property="article:published_time" content="2024-08-22T11:06:18.000Z">
-<meta property="article:modified_time" content="2024-10-19T03:32:51.964Z">
+<meta property="article:modified_time" content="2024-10-19T04:42:36.995Z">
 <meta property="article:author" content="Xiaoxuan Zhou">
 <meta property="article:tag" content="python">
 <meta property="article:tag" content="cpp">
@@ -317,7 +317,7 @@
               <p id="updated-time" class="note note-info" style="display: none">
                 
                   
-                    本文最后更新于 2024-10-19T11:32:51+08:00
+                    本文最后更新于 2024-10-19T12:42:36+08:00
                   
                   
 
@@ -327,14 +327,17 @@
             
               <div class="markdown-body">
                 
-                <p>在这里记录下有用的代码，有来自实验常用的，也有oj需要用的，oj是小白水平🥺
-## Python (mainly for Research) ### 设置可见GPU ### <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">import</span> os<br>os.environ[<span class="hljs-string">&quot;CUDA_VISIBLE_DEVICES&quot;</span>] = gpu_ids<br>gpu_ids = <span class="hljs-string">&#x27;0&#x27;</span><br></code></pre></td></tr></table></figure> -
-<strong>指定GPU</strong>：通过设置 <code>CUDA_VISIBLE_DEVICES</code>
+                <p>在这里记录下有用的代码，有来自实验常用的，也有oj需要用的，oj是小白水平🥺</p>
+<h2 id="python-mainly-for-research">Python (mainly for Research)</h2>
+<h3 id="设置可见gpu">设置可见GPU</h3>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">import</span> os<br>os.environ[<span class="hljs-string">&quot;CUDA_VISIBLE_DEVICES&quot;</span>] = gpu_ids<br>gpu_ids = <span class="hljs-string">&#x27;0&#x27;</span><br></code></pre></td></tr></table></figure>
+<ul>
+<li><strong>指定GPU</strong>：通过设置 <code>CUDA_VISIBLE_DEVICES</code>
 环境变量，可以指定哪些GPU可供程序使用。例如，如果有4个GPU（编号为 0, 1,
 2, 3），但只希望程序使用GPU 2和GPU
-3，你可以设置<code>gpu_ids = "2,3"</code>，这样程序运行时只会看到这两个GPU。
--
-<strong>屏蔽GPU</strong>：如果不希望程序使用任何GPU，可以将<code>gpu_ids</code>设置为空字符串，即<code>gpu_ids = ""</code>。这会使得程序无法看到任何GPU，从而只使用CPU。</p>
+3，你可以设置<code>gpu_ids = "2,3"</code>，这样程序运行时只会看到这两个GPU。</li>
+<li><strong>屏蔽GPU</strong>：如果不希望程序使用任何GPU，可以将<code>gpu_ids</code>设置为空字符串，即<code>gpu_ids = ""</code>。这会使得程序无法看到任何GPU，从而只使用CPU。</li>
+</ul>
 <p><strong>attention:</strong>
 这行代码实际上只是告诉程序哪些GPU是可见的或可用的，但它并不保证程序一定会使用这些GPU中的所有GPU。</p>
 <h2 id="c-mainly-for-online-judge">C++ (mainly for Online Judge)</h2>
