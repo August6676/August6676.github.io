@@ -28,7 +28,7 @@
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://grammartop.com/wp-content/uploads/2021/03/fine-tune-6ca442f259902f338dc89a7d65b89caead69ea40.png">
 <meta property="article:published_time" content="2024-10-19T09:21:27.000Z">
-<meta property="article:modified_time" content="2024-10-19T15:05:47.673Z">
+<meta property="article:modified_time" content="2024-10-20T04:04:30.781Z">
 <meta property="article:author" content="Xiaoxuan Zhou">
 <meta property="article:tag" content="fine-tuning">
 <meta name="twitter:card" content="summary_large_image">
@@ -254,7 +254,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          1.2k 字
+          1.7k 字
         
       </span>
     
@@ -265,7 +265,7 @@
         
         
         
-          11 分钟
+          15 分钟
         
       </span>
     
@@ -316,7 +316,7 @@
               <p id="updated-time" class="note note-info" style="display: none">
                 
                   
-                    本文最后更新于 2024-10-19T23:05:47+08:00
+                    本文最后更新于 2024-10-20T12:04:30+08:00
                   
                   
 
@@ -410,6 +410,36 @@ src="https://ice.frostsky.com/2024/10/19/1ce14a4e366bae0bdc8678e731e0a863.png" s
 alt="每十条挤在一起的日志" /></li>
 <li><code>save_steps</code>:
 每隔500步保存一下模型的checkpoint，那如果你的总共的step大于500，就会生成<code>checkpoint-500</code>,<code>checkpoint-1000</code>这样的文件夹，如果小于500，也会成成一个<code>checkpoint-步数</code>的文件夹，其实最终结果会保存两次。</li>
+</ul>
+<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs yaml"><span class="hljs-comment">### train</span><br><span class="hljs-attr">per_device_train_batch_size:</span> <span class="hljs-number">1</span><br><span class="hljs-attr">gradient_accumulation_steps:</span> <span class="hljs-number">8</span><br><span class="hljs-attr">learning_rate:</span> <span class="hljs-number">1.0e-4</span><br><span class="hljs-attr">num_train_epochs:</span> <span class="hljs-number">1</span><br><span class="hljs-attr">lr_scheduler_type:</span> <span class="hljs-string">cosine</span><br><span class="hljs-attr">warmup_ratio:</span> <span class="hljs-number">0.1</span><br><span class="hljs-attr">bf16:</span> <span class="hljs-literal">true</span><br><span class="hljs-attr">ddp_timeout:</span> <span class="hljs-number">180000000</span><br></code></pre></td></tr></table></figure>
+<ul>
+<li><code>per_device_train_batch_size</code>:
+每个设备上一次处理的样本数量，称为<strong>批量大小</strong>。它决定了每次训练时每个设备上处理多少条数据。</li>
+<li><code>gradient_accumulation_steps</code>:
+模型在进行权重值的更新之前会累计8次的梯度。也就是说，经过8个批次的数据后模型才会更新模型的权重。</li>
+<li><code>num_train_epochs</code>:
+表示数据集被完整训练一次。每个<code>epoch</code>代表模型对整个训练数据集的完整处理。更多的<code>epoch</code>通常意味着更充分的训练，但过多的<code>epoch</code>可能导致<strong>过拟合</strong></li>
+<li><code>lr_scheduler_type</code>:
+学习率调度器类型，在这里指定使用<strong>余弦退火调度（cosine learning
+rate
+scheduler）</strong>，当然也有其他的学习率调度方式。在整个训练过程中，学习率会先快速下降，然后以更平缓的速度逐渐减少（类似于余弦函数1/4的下降趋势）。</li>
+<li><code>warmup_ratio</code>:
+学习率的预热比例，表示在训练开始时，前10%的训练步骤用于从0逐渐增大学习率到设定的值。学习率预热有助于稳定训练的早期阶段，避免学习率太大使得模型更新过快。<a
+target="_blank" rel="noopener" href="https://www.baeldung.com/cs/learning-rate-warm-up">这篇文章</a>讲的不错~
+<img
+src="https://www.baeldung.com/wp-content/uploads/sites/4/2023/03/lr-schedule.png" srcset="/img/loading.gif" lazyload
+alt="lr-schedule.png" /></li>
+</ul>
+<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs yaml"><span class="hljs-comment">### eval</span><br><span class="hljs-attr">val_size:</span> <span class="hljs-number">0.1</span><br><span class="hljs-attr">per_device_eval_batch_size:</span> <span class="hljs-number">1</span><br><span class="hljs-attr">eval_strategy:</span> <span class="hljs-string">steps</span><br><span class="hljs-attr">eval_steps:</span> <span class="hljs-number">500</span><br></code></pre></td></tr></table></figure>
+<ul>
+<li><code>val_size</code>: 验证集的比例，表示从整个数据集中抽取 10%
+作为验证集（validation set）。</li>
+<li><code>per_device_eval_batch_size</code>:
+每个设备用于评估时处理的样本数量。</li>
+<li><code>eval_strategy</code>:
+评估策略，表示评估是在训练过程中的<strong>固定步数</strong>之后进行（而不是每个epoch结束时）。</li>
+<li><code>eval_steps</code>:
+如果选择了按步评估策略(<code>eval_strategy: steps</code>)，eval_steps决定了评估的频率。这个数值可以调节评估频次，较小的数值会更频繁地评估模型，但也会占用更多的时间，在本例中，如果总步数未达到500步，那么就在训练结束之后评估。</li>
 </ul>
 
                 
