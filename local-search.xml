@@ -4,6 +4,31 @@
   
   
   <entry>
+    <title>.env文件和.gitignore</title>
+    <link href="/2024/10/26/env%E6%96%87%E4%BB%B6%E5%92%8C-gitignore/"/>
+    <url>/2024/10/26/env%E6%96%87%E4%BB%B6%E5%92%8C-gitignore/</url>
+    
+    <content type="html"><![CDATA[<p>当我们在使用<code>API_KEY</code>、数据库密码，或者是在设置<code>http_proxy</code>的时候，往往不希望把这样的隐私信息上传到github中，那么怎么忽视这些信息呢？</p><p>有一个办法是使用<strong>.env文件</strong>来存储这些敏感信息。具体步骤如下所示：</p><ol type="1"><li>创建一个<code>.env</code>文件，并添加内容： <figure class="highlight makefile"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs makefile">API_KEY=your_api_key_here<br>PASSWORD = PASSWWWW<br></code></pre></td></tr></table></figure></li><li>安装<code>python-dotenv</code>库： <figure class="highlight makefile"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs makefile">pip install python-dotenv<br></code></pre></td></tr></table></figure></li><li>在代码中加载<code>.env</code>文件： <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">from</span> dotenv <span class="hljs-keyword">import</span> load_dotenv<br><span class="hljs-keyword">import</span> os<br><br>load_dotenv()  <span class="hljs-comment"># 加载.env文件</span><br>api_key = os.getenv(<span class="hljs-string">&quot;API_KEY&quot;</span>)<br></code></pre></td></tr></table></figure></li><li>确保<code>.env</code>文件不被上传到代码仓库。可以在<code>.gitignore</code>中添加：<code>.env</code></li></ol><p>这样，你随便push、pull也不要担心隐私泄露啦☺️~</p>]]></content>
+    
+    
+    <categories>
+      
+      <category>Research Basic</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>Git</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
     <title>微调策略对比</title>
     <link href="/2024/10/19/%E5%BE%AE%E8%B0%83%E7%AD%96%E7%95%A5%E5%AF%B9%E6%AF%94/"/>
     <url>/2024/10/19/%E5%BE%AE%E8%B0%83%E7%AD%96%E7%95%A5%E5%AF%B9%E6%AF%94/</url>
