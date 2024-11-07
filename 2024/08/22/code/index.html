@@ -28,7 +28,7 @@
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://img.picgo.net/2024/09/21/cloud-coding1c9553690a35738d.png">
 <meta property="article:published_time" content="2024-08-22T11:06:18.000Z">
-<meta property="article:modified_time" content="2024-11-06T02:06:32.003Z">
+<meta property="article:modified_time" content="2024-11-07T09:18:23.868Z">
 <meta property="article:author" content="Xiaoxuan Zhou">
 <meta property="article:tag" content="python">
 <meta property="article:tag" content="cpp">
@@ -255,7 +255,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          1.2k 字
+          1.4k 字
         
       </span>
     
@@ -266,7 +266,7 @@
         
         
         
-          10 分钟
+          12 分钟
         
       </span>
     
@@ -317,7 +317,7 @@
               <p id="updated-time" class="note note-info" style="display: none">
                 
                   
-                    本文最后更新于 2024-11-06T10:06:32+08:00
+                    本文最后更新于 2024-11-07T17:18:23+08:00
                   
                   
 
@@ -392,6 +392,8 @@ the binary tree</h4>
 <h3 id="dfs-template">DFS template</h3>
 <h4 id="trees-dfs">Tree's DFS</h4>
 <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-function"><span class="hljs-type">void</span> <span class="hljs-title">DFSTree</span><span class="hljs-params">(TreeNode* root)</span> </span>&#123;<br>   <span class="hljs-keyword">if</span> (root == <span class="hljs-literal">nullptr</span>) <span class="hljs-keyword">return</span>;<br>   <span class="hljs-comment">// 处理当前节点</span><br>   cout &lt;&lt; root-&gt;val &lt;&lt; <span class="hljs-string">&quot; &quot;</span>;<br>   <span class="hljs-comment">// 递归遍历左子树</span><br>   <span class="hljs-built_in">DFSTree</span>(root-&gt;left);<br>   <span class="hljs-comment">// 递归遍历右子树</span><br>   <span class="hljs-built_in">DFSTree</span>(root-&gt;right);<br>&#125;<br></code></pre></td></tr></table></figure>
+<h3 id="mergesort">MergeSort</h3>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-comment">// 这一步是两个升序数组的合并</span><br><span class="hljs-function">vector&lt;<span class="hljs-type">int</span>&gt; <span class="hljs-title">sortArray</span><span class="hljs-params">(vector&lt;<span class="hljs-type">int</span>&gt;&amp; nums1,vector&lt;<span class="hljs-type">int</span>&gt;&amp; nums2)</span> </span>&#123;<br>    vector&lt;<span class="hljs-type">int</span>&gt;result;<br>    <span class="hljs-type">int</span> point1 = <span class="hljs-number">0</span>,point2 = <span class="hljs-number">0</span>;<br>    <span class="hljs-keyword">while</span> (point1 &lt; nums<span class="hljs-number">1.</span><span class="hljs-built_in">size</span>() &amp;&amp; point2 &lt; nums<span class="hljs-number">2.</span><span class="hljs-built_in">size</span>()) &#123;<br>        <span class="hljs-keyword">if</span> (nums1[point1] &lt; nums2[point2]) &#123;<br>            result.<span class="hljs-built_in">push_back</span>(nums1[point1]);<br>            point1++;<br>        &#125;<span class="hljs-keyword">else</span> &#123;<br>            result.<span class="hljs-built_in">push_back</span>(nums2[point2]);<br>            point2++;<br>        &#125;<br>    &#125;<br>    <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> i = point1; i &lt; nums<span class="hljs-number">1.</span><span class="hljs-built_in">size</span>();i++) &#123;<br>        result.<span class="hljs-built_in">push_back</span>(nums1[i]);<br>    &#125;<br><br>    <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> i = point2; i &lt; nums<span class="hljs-number">2.</span><span class="hljs-built_in">size</span>();i++) &#123;<br>        result.<span class="hljs-built_in">push_back</span>(nums2[i]);<br>    &#125;<br><br>    <span class="hljs-keyword">return</span> result;<br>&#125;<br><br><span class="hljs-comment">// 这是归并排序主代码</span><br><span class="hljs-function">vector&lt;<span class="hljs-type">int</span>&gt; <span class="hljs-title">sortArray</span><span class="hljs-params">(vector&lt;<span class="hljs-type">int</span>&gt;&amp; nums)</span> </span>&#123;<br>    <span class="hljs-keyword">if</span> (nums.<span class="hljs-built_in">empty</span>() || nums.<span class="hljs-built_in">size</span>() == <span class="hljs-number">1</span>) <span class="hljs-keyword">return</span> nums;<br><br>    <span class="hljs-type">int</span> mid = nums.<span class="hljs-built_in">size</span>() / <span class="hljs-number">2</span>;<br>    <span class="hljs-function">vector&lt;<span class="hljs-type">int</span>&gt; <span class="hljs-title">left</span><span class="hljs-params">(nums.begin(),nums.begin() + mid)</span></span>;<br>    <span class="hljs-function">vector&lt;<span class="hljs-type">int</span>&gt; <span class="hljs-title">right</span><span class="hljs-params">(nums.begin()+mid,nums.end())</span></span>;<br>    left = <span class="hljs-built_in">sortArray</span>(left);<br>    right = <span class="hljs-built_in">sortArray</span>(right);<br>    <span class="hljs-keyword">return</span> <span class="hljs-built_in">sortArray</span>(left,right);<br>&#125;<br></code></pre></td></tr></table></figure>
 
                 
               </div>
