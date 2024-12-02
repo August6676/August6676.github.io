@@ -28,7 +28,7 @@
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://img.picgo.net/2024/09/21/cloud-coding1c9553690a35738d.png">
 <meta property="article:published_time" content="2024-08-22T11:06:18.000Z">
-<meta property="article:modified_time" content="2024-11-28T11:48:41.788Z">
+<meta property="article:modified_time" content="2024-12-02T03:32:56.784Z">
 <meta property="article:author" content="Xiaoxuan Zhou">
 <meta property="article:tag" content="python">
 <meta property="article:tag" content="cpp">
@@ -255,7 +255,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          1.5k 字
+          1.8k 字
         
       </span>
     
@@ -266,7 +266,7 @@
         
         
         
-          13 分钟
+          15 分钟
         
       </span>
     
@@ -317,7 +317,7 @@
               <p id="updated-time" class="note note-info" style="display: none">
                 
                   
-                    本文最后更新于 2024-11-28T19:48:41+08:00
+                    本文最后更新于 2024-12-02T11:32:56+08:00
                   
                   
 
@@ -384,11 +384,34 @@ the binary tree</h4>
 <li>HashMap <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-keyword">for</span> (<span class="hljs-keyword">auto</span> it = mp.<span class="hljs-built_in">begin</span>(); it != mp.<span class="hljs-built_in">end</span>(); ++it) &#123;<br>   it-&gt;first; <span class="hljs-comment">// key</span><br>   it-&gt;second; <span class="hljs-comment">// value</span><br>   <span class="hljs-comment">// other code</span><br>   &#125;<br><span class="hljs-keyword">for</span> (<span class="hljs-keyword">auto</span>&amp; [key, value] : mp) &#123;<br>   <span class="hljs-comment">// other code</span><br>   &#125;<br></code></pre></td></tr></table></figure></li>
 <li>HashSet <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-keyword">for</span> (<span class="hljs-keyword">auto</span> it = st.<span class="hljs-built_in">begin</span>(); it != st.<span class="hljs-built_in">end</span>(); ++it) &#123;<br>   *it; <span class="hljs-comment">// value</span><br>&#125;<br><span class="hljs-keyword">for</span> (<span class="hljs-keyword">auto</span>&amp; value : st) &#123;<br>   value;<br>&#125;<br></code></pre></td></tr></table></figure></li>
 </ol>
+<h3 id="about-char">About char</h3>
+<h4 id="isdigit">isDigit()</h4>
+<ul>
+<li><p>用于检查一个字符是否是数字字符（0-9）</p></li>
+<li><p>返回值为布尔值：true 表示该字符是数字，false
+表示不是数字</p></li>
+</ul>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-type">char</span> c1 = <span class="hljs-string">&#x27;5&#x27;</span>;<br><span class="hljs-type">char</span> c2 = <span class="hljs-string">&#x27;a&#x27;</span>;<br>cout &lt;&lt; <span class="hljs-built_in">isdigit</span>(c1) &lt;&lt; endl;  <span class="hljs-comment">// 输出 1，因为 &#x27;5&#x27; 是数字</span><br>cout &lt;&lt; <span class="hljs-built_in">isdigit</span>(c2) &lt;&lt; endl;  <span class="hljs-comment">// 输出 0，因为 &#x27;a&#x27; 不是数字</span><br></code></pre></td></tr></table></figure>
+<h4 id="convert-to-number">Convert to Number</h4>
+<ul>
+<li>将字符串转换为整数（string to integer）</li>
+<li>支持处理带符号的整数（如正数和负数）</li>
+<li>如果字符串不是有效数字格式，则会抛出异常</li>
+</ul>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-function"><span class="hljs-type">int</span> <span class="hljs-title">stoi</span><span class="hljs-params">(<span class="hljs-type">const</span> string&amp; str, <span class="hljs-type">size_t</span>* idx = <span class="hljs-number">0</span>, <span class="hljs-type">int</span> base = <span class="hljs-number">10</span>)</span></span>;<br></code></pre></td></tr></table></figure>
+<ul>
+<li><code>str</code>：待转换的字符串</li>
+<li><code>idx</code>（可选）：表示转换停止的字符索引（用来标记多余字符起始位置）</li>
+<li><code>base</code>（可选）：表示字符串的进制（默认为10，支持2、8、16等）</li>
+</ul>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><code class="hljs cpp">string s1 = <span class="hljs-string">&quot;123&quot;</span>;<br>string s2 = <span class="hljs-string">&quot;-456&quot;</span>;<br>string s3 = <span class="hljs-string">&quot;789abc&quot;</span>;<br><br><span class="hljs-comment">// 基本使用</span><br>cout &lt;&lt; <span class="hljs-built_in">stoi</span>(s1) &lt;&lt; endl;  <span class="hljs-comment">// 输出 123</span><br>cout &lt;&lt; <span class="hljs-built_in">stoi</span>(s2) &lt;&lt; endl;  <span class="hljs-comment">// 输出 -456</span><br><br><span class="hljs-comment">// 使用 idx 参数</span><br><span class="hljs-type">size_t</span> idx;<br><span class="hljs-type">int</span> num = <span class="hljs-built_in">stoi</span>(s3, &amp;idx);<br>cout &lt;&lt; num &lt;&lt; endl;       <span class="hljs-comment">// 输出 789</span><br>cout &lt;&lt; <span class="hljs-string">&quot;剩余字符串: &quot;</span> &lt;&lt; s<span class="hljs-number">3.</span><span class="hljs-built_in">substr</span>(idx) &lt;&lt; endl;  <span class="hljs-comment">// 输出 &quot;abc&quot;</span><br></code></pre></td></tr></table></figure>
 <h3 id="about-string">About string</h3>
 <h4 id="substring">substring</h4>
 <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs cpp">string s = <span class="hljs-string">&quot;Hello World&quot;</span>;<br>string sub = s.<span class="hljs-built_in">substr</span>(<span class="hljs-number">6</span>, <span class="hljs-number">5</span>); <span class="hljs-comment">// 从索引6开始，长度为5的子串</span><br>sub == <span class="hljs-string">&quot;World&quot;</span>; <span class="hljs-comment">// 判断字符串是否相等</span><br></code></pre></td></tr></table></figure>
-<h3 id="append-string">Append string</h3>
+<h4 id="append-string">Append string</h4>
 <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs cpp">string s1 = <span class="hljs-string">&quot;Hello&quot;</span>;<br><span class="hljs-type">int</span> num = <span class="hljs-number">3</span>;<br>s<span class="hljs-number">1.</span><span class="hljs-built_in">append</span>(num, <span class="hljs-string">&#x27;a&#x27;</span>); <span class="hljs-comment">// 将字母a重复3次，并追加到s1后面</span><br></code></pre></td></tr></table></figure>
+<h4 id="reverse-string">Reverse string</h4>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs cpp">string s = <span class="hljs-string">&quot;123456&quot;</span>;<br><span class="hljs-built_in">reverse</span>(s.<span class="hljs-built_in">begin</span>().s.<span class="hljs-built_in">end</span>()); <span class="hljs-comment">// 反转字符串顺序</span><br></code></pre></td></tr></table></figure>
 <h3 id="about-matrix">About matrix</h3>
 <h4 id="matrix-transpose">Matrix transpose</h4>
 <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs cpp">vector&lt;vector&lt;<span class="hljs-type">int</span>&gt;&gt; matrix = &#123;&#123;<span class="hljs-number">1</span>,<span class="hljs-number">2</span>,<span class="hljs-number">3</span>&#125;,&#123;<span class="hljs-number">4</span>,<span class="hljs-number">5</span>,<span class="hljs-number">6</span>&#125;,&#123;<span class="hljs-number">7</span>,<span class="hljs-number">8</span>,<span class="hljs-number">9</span>&#125;&#125;;<br><span class="hljs-type">int</span> n = matrix.<span class="hljs-built_in">size</span>();<br><span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> i = <span class="hljs-number">0</span>;i &lt; n;i++) &#123;<br>   <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> j = i + <span class="hljs-number">1</span>; j &lt; n;j++) &#123;<br>      <span class="hljs-built_in">swap</span>(matrix[i][j],matrix[j][i]);<br>      &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
