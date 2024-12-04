@@ -28,7 +28,7 @@
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://img.picgo.net/2024/09/21/cloud-coding1c9553690a35738d.png">
 <meta property="article:published_time" content="2024-08-22T11:06:18.000Z">
-<meta property="article:modified_time" content="2024-12-02T03:32:56.784Z">
+<meta property="article:modified_time" content="2024-12-04T03:04:58.226Z">
 <meta property="article:author" content="Xiaoxuan Zhou">
 <meta property="article:tag" content="python">
 <meta property="article:tag" content="cpp">
@@ -317,7 +317,7 @@
               <p id="updated-time" class="note note-info" style="display: none">
                 
                   
-                    本文最后更新于 2024-12-02T11:32:56+08:00
+                    本文最后更新于 2024-12-04T11:04:58+08:00
                   
                   
 
@@ -412,6 +412,10 @@ the binary tree</h4>
 <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs cpp">string s1 = <span class="hljs-string">&quot;Hello&quot;</span>;<br><span class="hljs-type">int</span> num = <span class="hljs-number">3</span>;<br>s<span class="hljs-number">1.</span><span class="hljs-built_in">append</span>(num, <span class="hljs-string">&#x27;a&#x27;</span>); <span class="hljs-comment">// 将字母a重复3次，并追加到s1后面</span><br></code></pre></td></tr></table></figure>
 <h4 id="reverse-string">Reverse string</h4>
 <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs cpp">string s = <span class="hljs-string">&quot;123456&quot;</span>;<br><span class="hljs-built_in">reverse</span>(s.<span class="hljs-built_in">begin</span>().s.<span class="hljs-built_in">end</span>()); <span class="hljs-comment">// 反转字符串顺序</span><br></code></pre></td></tr></table></figure>
+<h4 id="spilt-string">Spilt string</h4>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs cpp">string s = <span class="hljs-string">&quot;/home/foo/&quot;</span><br><span class="hljs-keyword">for</span> (<span class="hljs-type">char</span> ch : s) &#123;<br>   <span class="hljs-keyword">if</span> (ch == <span class="hljs-string">&quot;/&quot;</span>) &#123;<br>      <span class="hljs-comment">// some work</span><br>   &#125; <span class="hljs-keyword">else</span> &#123;<br>      <span class="hljs-comment">// some work</span><br>   &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+<h4 id="clear-string">clear string</h4>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs cpp">string s = <span class="hljs-string">&quot;122344&quot;</span>;<br>s.<span class="hljs-built_in">clear</span>(); <span class="hljs-comment">// 置空字符串</span><br></code></pre></td></tr></table></figure>
 <h3 id="about-matrix">About matrix</h3>
 <h4 id="matrix-transpose">Matrix transpose</h4>
 <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs cpp">vector&lt;vector&lt;<span class="hljs-type">int</span>&gt;&gt; matrix = &#123;&#123;<span class="hljs-number">1</span>,<span class="hljs-number">2</span>,<span class="hljs-number">3</span>&#125;,&#123;<span class="hljs-number">4</span>,<span class="hljs-number">5</span>,<span class="hljs-number">6</span>&#125;,&#123;<span class="hljs-number">7</span>,<span class="hljs-number">8</span>,<span class="hljs-number">9</span>&#125;&#125;;<br><span class="hljs-type">int</span> n = matrix.<span class="hljs-built_in">size</span>();<br><span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> i = <span class="hljs-number">0</span>;i &lt; n;i++) &#123;<br>   <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> j = i + <span class="hljs-number">1</span>; j &lt; n;j++) &#123;<br>      <span class="hljs-built_in">swap</span>(matrix[i][j],matrix[j][i]);<br>      &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
