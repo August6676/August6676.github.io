@@ -28,7 +28,7 @@
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://img.picgo.net/2024/09/21/cloud-coding1c9553690a35738d.png">
 <meta property="article:published_time" content="2024-08-22T11:06:18.000Z">
-<meta property="article:modified_time" content="2024-12-13T08:01:47.697Z">
+<meta property="article:modified_time" content="2024-12-15T13:01:49.182Z">
 <meta property="article:author" content="Xiaoxuan Zhou">
 <meta property="article:tag" content="python">
 <meta property="article:tag" content="cpp">
@@ -266,7 +266,7 @@
         
         
         
-          19 分钟
+          20 分钟
         
       </span>
     
@@ -317,7 +317,7 @@
               <p id="updated-time" class="note note-info" style="display: none">
                 
                   
-                    本文最后更新于 2024-12-13T16:01:47+08:00
+                    本文最后更新于 2024-12-15T21:01:49+08:00
                   
                   
 
@@ -388,6 +388,10 @@ array</h4>
 <li><code>init</code>：累加的初始值，这个值会作为累加计算的起点。累加后的结果将基于这个初始值。</li>
 </ul>
 <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;vector&gt;</span></span><br><span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;numeric&gt;</span>  <span class="hljs-comment">// accumulate 所在的头文件</span></span><br><span class="hljs-keyword">using</span> <span class="hljs-keyword">namespace</span> std;<br><span class="hljs-comment">// 使用 accumulate 计算 nums 中所有元素的和，初始值为 0</span><br><span class="hljs-type">int</span> total = <span class="hljs-built_in">accumulate</span>(nums.<span class="hljs-built_in">begin</span>(), nums.<span class="hljs-built_in">end</span>(), <span class="hljs-number">0</span>);<br></code></pre></td></tr></table></figure>
+<h4 id="lower_bound">lower_bound()</h4>
+<p>在一个有序数组（或容器）中找到第一个大于等于指定值的元素的位置
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-keyword">auto</span> it = <span class="hljs-built_in">lower_bound</span>(sub.<span class="hljs-built_in">begin</span>(), sub.<span class="hljs-built_in">end</span>(), x);<br></code></pre></td></tr></table></figure>
+如果<code>it == sub.end()</code>，表示<code>x</code>比<code>sub</code>中的所有元素都大（即<code>x</code>可以直接追加到数组末尾）。</p>
 <h3 id="about-binary-tree">About Binary Tree</h3>
 <h4 id="中序遍历">中序遍历</h4>
 <ol type="1">
