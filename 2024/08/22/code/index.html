@@ -28,7 +28,7 @@
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://img.picgo.net/2024/09/21/cloud-coding1c9553690a35738d.png">
 <meta property="article:published_time" content="2024-08-22T11:06:18.000Z">
-<meta property="article:modified_time" content="2024-12-18T03:09:46.906Z">
+<meta property="article:modified_time" content="2024-12-20T12:03:43.079Z">
 <meta property="article:author" content="Xiaoxuan Zhou">
 <meta property="article:tag" content="python">
 <meta property="article:tag" content="cpp">
@@ -255,7 +255,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          2.4k 字
+          2.3k 字
         
       </span>
     
@@ -317,7 +317,7 @@
               <p id="updated-time" class="note note-info" style="display: none">
                 
                   
-                    本文最后更新于 2024-12-18T11:09:46+08:00
+                    本文最后更新于 2024-12-20T20:03:43+08:00
                   
                   
 
@@ -327,20 +327,7 @@
             
               <div class="markdown-body">
                 
-                <p>在这里记录下有用的代码，有来自实验常用的，也有oj需要用的，oj是小白水平🥺</p>
-<h2 id="python-mainly-for-research">Python (mainly for Research)</h2>
-<h3 id="设置可见gpu">设置可见GPU</h3>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">import</span> os<br>os.environ[<span class="hljs-string">&quot;CUDA_VISIBLE_DEVICES&quot;</span>] = gpu_ids<br>gpu_ids = <span class="hljs-string">&#x27;0&#x27;</span><br></code></pre></td></tr></table></figure>
-<ul>
-<li><strong>指定GPU</strong>：通过设置 <code>CUDA_VISIBLE_DEVICES</code>
-环境变量，可以指定哪些GPU可供程序使用。例如，如果有4个GPU（编号为 0, 1,
-2, 3），但只希望程序使用GPU 2和GPU
-3，你可以设置<code>gpu_ids = "2,3"</code>，这样程序运行时只会看到这两个GPU。</li>
-<li><strong>屏蔽GPU</strong>：如果不希望程序使用任何GPU，可以将<code>gpu_ids</code>设置为空字符串，即<code>gpu_ids = ""</code>。这会使得程序无法看到任何GPU，从而只使用CPU。</li>
-</ul>
-<p><strong>attention:</strong>
-这行代码实际上只是告诉程序哪些GPU是可见的或可用的，但它并不保证程序一定会使用这些GPU中的所有GPU。</p>
-<h2 id="c-mainly-for-online-judge">C++ (mainly for Online Judge)</h2>
+                <h2 id="c-mainly-for-online-judge">C++ (mainly for Online Judge)</h2>
 <h3 id="type-casting">Type Casting</h3>
 <ol type="1">
 <li><p><code>long</code> to <code>int</code> <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-type">long</span> currentUgly = <span class="hljs-number">1</span>;<br><span class="hljs-keyword">return</span> (<span class="hljs-type">int</span>)currentUgly;<br></code></pre></td></tr></table></figure></p></li>
@@ -392,6 +379,17 @@ array</h4>
 <p>在一个有序数组（或容器）中找到第一个大于等于指定值的元素的位置
 <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-keyword">auto</span> it = <span class="hljs-built_in">lower_bound</span>(sub.<span class="hljs-built_in">begin</span>(), sub.<span class="hljs-built_in">end</span>(), x);<br></code></pre></td></tr></table></figure>
 如果<code>it == sub.end()</code>，表示<code>x</code>比<code>sub</code>中的所有元素都大（即<code>x</code>可以直接追加到数组末尾）。</p>
+<h4 id="max_elementmin_element">max_element()/min_element()</h4>
+<p>用于找到在指定范围内最大、最小值的函数，它是<code>&lt;algorithm&gt;</code>头文件中的一个函数模板。
+参数：</p>
+<ul>
+<li><code>first</code>：容器或范围的起始迭代器</li>
+<li><code>last</code>：容器或范围的结束迭代器（不包括最后一个元素）</li>
+<li>（可选）<code>comp</code>：一个二元谓词，用于指定比较规则</li>
+</ul>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-function"><span class="hljs-keyword">template</span>&lt; <span class="hljs-keyword">class</span> ForwardIterator &gt;</span><br><span class="hljs-function">ForwardIterator <span class="hljs-title">max_element</span><span class="hljs-params">( ForwardIterator first, ForwardIterator last )</span></span>;<br><br><span class="hljs-function"><span class="hljs-keyword">template</span>&lt; <span class="hljs-keyword">class</span> ForwardIterator, <span class="hljs-keyword">class</span> Compare &gt;</span><br><span class="hljs-function">ForwardIterator <span class="hljs-title">max_element</span><span class="hljs-params">( ForwardIterator first, ForwardIterator last, Compare comp )</span></span>; <br></code></pre></td></tr></table></figure>
+<p>注意，返回值是一个<strong>指向最大元素的迭代器</strong>，在取出具体值的时候，要使用<code>*</code>取出：
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs cpp">vector&lt;<span class="hljs-type">int</span>&gt; vec = &#123;<span class="hljs-number">3</span>, <span class="hljs-number">1</span>, <span class="hljs-number">4</span>, <span class="hljs-number">1</span>, <span class="hljs-number">5</span>&#125;;<br><span class="hljs-keyword">auto</span> max_it = <span class="hljs-built_in">max_element</span>(vec.<span class="hljs-built_in">begin</span>(), vec.<span class="hljs-built_in">end</span>());<br>cout &lt;&lt; <span class="hljs-string">&quot;最大值是：&quot;</span> &lt;&lt; *max_it &lt;&lt; endl;<br></code></pre></td></tr></table></figure></p>
 <h3 id="about-binary-tree">About Binary Tree</h3>
 <h4 id="中序遍历">中序遍历</h4>
 <ol type="1">
