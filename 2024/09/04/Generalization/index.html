@@ -19,12 +19,12 @@
   <meta name="author" content="Xiaoxuan Zhou">
   <meta name="keywords" content="">
   
-    <meta name="description" content="🌞🌞有幸接触到一个做域泛化的项目组，在准备期间看论文发现自己机器学习、深度学习的基础其实一点都不扎实🥹🥹，在这里记录一下跟进项目需要用到的知识点！ ### 域自适应[Domain Adaptation] VS 域泛化[Domain Generalization] 以一个具体的场景为例： 假设我在开发一个自动驾驶系统，它需要识别街道上的行人。我在A城市收集了大量的行人图像（源领域），我">
+    <meta name="description" content="🌞🌞有幸接触到一个做域泛化的项目组，在准备期间看论文发现自己机器学习、深度学习的基础其实一点都不扎实🥹🥹，在这里记录一下跟进项目需要用到的知识点！ ### 域自适应[Domain Adaptation] VS 域泛化[Domain Generalization] 以一个具体的场景为例： 假设我在开发一个自动驾驶系统，它需要识别街道上的行人。我在A城市收集了大量的行人图像（源领域），我的目标">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Basic Knowledge for Domain Generalization">
 <meta property="og:url" content="https://august6676.github.io/2024/09/04/Generalization/index.html">
 <meta property="og:site_name" content="Echo&#39;s Blog🐱">
-<meta property="og:description" content="🌞🌞有幸接触到一个做域泛化的项目组，在准备期间看论文发现自己机器学习、深度学习的基础其实一点都不扎实🥹🥹，在这里记录一下跟进项目需要用到的知识点！ ### 域自适应[Domain Adaptation] VS 域泛化[Domain Generalization] 以一个具体的场景为例： 假设我在开发一个自动驾驶系统，它需要识别街道上的行人。我在A城市收集了大量的行人图像（源领域），我">
+<meta property="og:description" content="🌞🌞有幸接触到一个做域泛化的项目组，在准备期间看论文发现自己机器学习、深度学习的基础其实一点都不扎实🥹🥹，在这里记录一下跟进项目需要用到的知识点！ ### 域自适应[Domain Adaptation] VS 域泛化[Domain Generalization] 以一个具体的场景为例： 假设我在开发一个自动驾驶系统，它需要识别街道上的行人。我在A城市收集了大量的行人图像（源领域），我的目标">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://imgbed.yiyunt.cn/img/43">
 <meta property="article:published_time" content="2024-09-04T13:09:01.000Z">
@@ -327,22 +327,14 @@
             
               <div class="markdown-body">
                 
-                <p>🌞🌞有幸接触到一个做域泛化的项目组，在准备期间看论文发现自己机器学习、深度学习的基础其实一点都不扎实🥹🥹，在这里记录一下跟进项目需要用到的知识点！
-### <strong>域自适应[Domain Adaptation]</strong> VS
-<strong>域泛化[Domain Generalization]</strong> 以一个具体的场景为例：
-假设我在开发一个自动驾驶系统，它需要识别街道上的行人。我在A城市收集了大量的行人图像（源领域），我的目标是把这个系统应用到B城市，但是B城市的街道布局、行人穿着、天气条件等可能与A有所不同，这就是所谓的“领域偏移”（domain
-shift）。</p>
+                <p>🌞🌞有幸接触到一个做域泛化的项目组，在准备期间看论文发现自己机器学习、深度学习的基础其实一点都不扎实🥹🥹，在这里记录一下跟进项目需要用到的知识点！ ### <strong>域自适应[Domain Adaptation]</strong> VS <strong>域泛化[Domain Generalization]</strong> 以一个具体的场景为例： 假设我在开发一个自动驾驶系统，它需要识别街道上的行人。我在A城市收集了大量的行人图像（源领域），我的目标是把这个系统应用到B城市，但是B城市的街道布局、行人穿着、天气条件等可能与A有所不同，这就是所谓的“领域偏移”（domain shift）。</p>
 <ul>
-<li><strong>Domain Adaptation:</strong>
-在训练的过程中，就给模型提供B城市的图像，虽然这些图像可能没有标注过，但是我的目标是让模型利用这些未标注的目标领域数据，调整自己对新环境的适应性。</li>
-<li><strong>Domain Generalization:</strong>
-在训练过程中，我并不提供B城市的图像，而模型在使用的过程中，也可以识别出B城市的行人。</li>
+<li><strong>Domain Adaptation:</strong> 在训练的过程中，就给模型提供B城市的图像，虽然这些图像可能没有标注过，但是我的目标是让模型利用这些未标注的目标领域数据，调整自己对新环境的适应性。</li>
+<li><strong>Domain Generalization:</strong> 在训练过程中，我并不提供B城市的图像，而模型在使用的过程中，也可以识别出B城市的行人。</li>
 </ul>
 <p>总结来说：<strong>域自适应</strong>是通过使用一些目标领域的数据来帮助模型适应新环境，而<strong>域泛化</strong>则要求模型在没有看到目标领域数据的情况下，依然能够应对新的环境。</p>
 <h3 id="元学习meta-learning">元学习[Meta Learning]</h3>
-<p>Meta-learning，也称为“学习如何学习”，是一种机器学习方法，旨在通过学习元知识（即关于学习过程本身的知识）来提高模型在新任务上的表现。Meta-learning的目标是使模型能够快速适应新任务，即使在只有少量训练数据的情况下，也能取得良好的效果。元学习的核心想法是学习一个先验知识
-(prior)。 &gt;
-(夹带点私货，下面这个elegant的图，是用mermaid绘制出来的，useful!🤩🤩欸，但是大小不好调整，而且多次尝试都失败了，😢sad)</p>
+<p>Meta-learning，也称为“学习如何学习”，是一种机器学习方法，旨在通过学习元知识（即关于学习过程本身的知识）来提高模型在新任务上的表现。Meta-learning的目标是使模型能够快速适应新任务，即使在只有少量训练数据的情况下，也能取得良好的效果。元学习的核心想法是学习一个先验知识 (prior)。 &gt; (夹带点私货，下面这个elegant的图，是用mermaid绘制出来的，useful!🤩🤩欸，但是大小不好调整，而且多次尝试都失败了，😢sad)</p>
 <p><strong>元学习的内容细分</strong></p>
 <pre><code class=" mermaid">%%&#123; init: &#123; &quot;theme&quot;: &quot;base&quot;, &quot;themeVariables&quot;: &#123; &quot;width&quot;: &quot;300px&quot;, &quot;height&quot;: &quot;300px&quot; &#125;&#125;&#125;%%
 graph LR
@@ -375,23 +367,12 @@ M --&gt; O
 end
 </code></pre>
 <h3 id="pacs-数据集">PACS 数据集</h3>
-<p><strong>PACS</strong>
-是一个常用于域自适应和域泛化任务的数据集。它特别适用于评估模型在不同视觉风格下的泛化能力。PACS
-的全称来自它所包含的四个不同的视觉风格类别： - P: Photo（真实照片） - A:
-Art painting（艺术画） - C: Cartoon（卡通图像） - S: Sketch（素描）</p>
+<p><strong>PACS</strong> 是一个常用于域自适应和域泛化任务的数据集。它特别适用于评估模型在不同视觉风格下的泛化能力。PACS 的全称来自它所包含的四个不同的视觉风格类别： - P: Photo（真实照片） - A: Art painting（艺术画） - C: Cartoon（卡通图像） - S: Sketch（素描）</p>
 <p>每种风格都包含相同的7个类别的物体：狗、象、长颈鹿、吉他、马、房子、人物。</p>
-<p>PACS
-的数据来自四种视觉风格，旨在研究模型如何在不同的视觉领域间进行泛化。例如，模型可能在“Photo”风格上进行训练，但要在“Art
-painting”或“Cartoon”风格上进行测试。</p>
+<p>PACS 的数据来自四种视觉风格，旨在研究模型如何在不同的视觉领域间进行泛化。例如，模型可能在“Photo”风格上进行训练，但要在“Art painting”或“Cartoon”风格上进行测试。</p>
 <h3 id="图像的通道">图像的通道</h3>
-<p>图像的通道是指图像中每个像素点所包含的颜色或信息维度。不同类型的图像根据所使用的颜色模式可能有不同数量的通道。
-RGB图像是最常见的彩色图像格式，有<strong>三个</strong>通道：红色
-(Red)、绿色 (Green)、蓝色 (Blue)。
-每个像素点通过三个通道的组合来表示颜色。每个通道的值通常范围在 0 到 255
-之间，不同通道的组合可以生成不同的颜色。</p>
-<p>在深度学习中，特别是计算机视觉任务中，通道数是图像张量结构的一部分。例如，对于一个
-RGB 图像，张量通常表示为 (C, H, W)，其中： - C 代表通道数（对于 RGB
-图像为 3）； - H 代表图像的高度； - W 代表图像的宽度。</p>
+<p>图像的通道是指图像中每个像素点所包含的颜色或信息维度。不同类型的图像根据所使用的颜色模式可能有不同数量的通道。 RGB图像是最常见的彩色图像格式，有<strong>三个</strong>通道：红色 (Red)、绿色 (Green)、蓝色 (Blue)。 每个像素点通过三个通道的组合来表示颜色。每个通道的值通常范围在 0 到 255 之间，不同通道的组合可以生成不同的颜色。</p>
+<p>在深度学习中，特别是计算机视觉任务中，通道数是图像张量结构的一部分。例如，对于一个 RGB 图像，张量通常表示为 (C, H, W)，其中： - C 代表通道数（对于 RGB 图像为 3）； - H 代表图像的高度； - W 代表图像的宽度。</p>
 <p>神经网络会分别处理每个通道的数据，并通过卷积、池化等操作来提取和处理图像的特征。</p>
 
                 
