@@ -347,7 +347,9 @@ W_{21} &amp; W_{22} &amp; \cdots &amp; W_{2m} \\
 \vdots &amp; \vdots &amp; \ddots &amp; \vdots \\
 W_{n1} &amp; W&#39;_{n2} &amp; \cdots &amp; W&#39;_{nm}
 \end{pmatrix}
-\]</span> 也就是说，只有两个参数有变动，其他的参数其实都没变化。即使是这样，我们也可以理解成，这整个矩阵加上了一个新的稀疏矩阵（很多0）： <span class="math display">\[
+\]</span>
+也就是说，只有两个参数有变动，其他的参数其实都没变化。即使是这样，我们也可以理解成，这整个矩阵加上了一个新的稀疏矩阵（很多0）：
+<span class="math display">\[
 \Delta W = \begin{pmatrix}
 0 &amp; 0 &amp; \cdots &amp; 0 \\
 0 &amp; 0 &amp; \cdots &amp; 0 \\
@@ -361,48 +363,82 @@ W&#39; = W + \Delta W
 <p>这就是<strong>全量微调</strong>，我们在该过程中其实对所有参数都进行了更新。很明显，该方法存在冗余计算问题，带来了大量的不必要的浪费。</p>
 <h2 id="lora微调策略">LoRA微调策略</h2>
 <p>所以，未为了解决全量微调不必要的弊端，<strong>LoRA微调策略</strong>诞生了，它引入了<strong>低秩分解技术</strong>（其实就素线性代数哇）。</p>
-<p>要求使用包含行间数学公式：线代及格的小伙伴们都知道，一个矩阵 $ A ^{100 × k} $ 和一个矩阵 $ B ^{k × 100}$ 相乘得到的矩阵是 $ W ^{100 × 100} $。</p>
-<p>那么我们在全量微调中使用的增量矩阵 $ ∆ W $ 也可以用同样的方式表示：<br />
+<p>要求使用包含行间数学公式：线代及格的小伙伴们都知道，一个矩阵 $ A
+^{100 × k} $ 和一个矩阵 $ B ^{k × 100}$ 相乘得到的矩阵是 $ W ^{100 ×
+100} $。</p>
+<p>那么我们在全量微调中使用的增量矩阵 $ ∆ W $
+也可以用同样的方式表示：<br />
 <span class="math display">\[
 \Delta W = A_{\Delta} B_{\Delta}
 \]</span> 也就是说： <span class="math display">\[
 W = W_0 + \Delta W = W_0 + A_{\Delta} B_{\Delta}
 \]</span></p>
-<p>基于这个思路，如果我们要更新的参数矩阵$ W ^{m × n} $非常大，但我们也使用两个小矩阵相乘，这样需要调整的参数量就降下来了。</p>
+<p>基于这个思路，如果我们要更新的参数矩阵$ W ^{m × n}
+$非常大，但我们也使用两个小矩阵相乘，这样需要调整的参数量就降下来了。</p>
 <p><span class="math display">\[
-m \cdot n \gg m \cdot k + k \cdot n \quad (\text{where} \quad m, n \gg k)
+m \cdot n \gg m \cdot k + k \cdot n \quad (\text{where} \quad m, n \gg
+k)
 \]</span></p>
-<p>这样大大减少了需要调整的参数量，并有效减少了计算复杂度，但是，这样的微调效果和全量微调的效果相比，会怎么样呢？ (To be continued...)</p>
-<h2 id="记一次llamafactory微调失败的学习过程">记一次LlamaFactory微调失败的学习过程</h2>
+<p>这样大大减少了需要调整的参数量，并有效减少了计算复杂度，但是，这样的微调效果和全量微调的效果相比，会怎么样呢？
+(To be continued...)</p>
+<h2
+id="记一次llamafactory微调失败的学习过程">记一次LlamaFactory微调失败的学习过程</h2>
 <p>我在使用LlamaFactory框架对<code>deepseek-coder-6.7b-instruct</code>进行sft指令微调的时候，我所使用的数据集一个80k一个260k，但是，我只跑了36分钟就跑完了。why？</p>
-<p>经过查找，是在<code>yaml</code>文件中的配置出了问题： <figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs yaml"><span class="hljs-comment">### dataset</span><br><span class="hljs-attr">dataset:</span> <span class="hljs-string">Magicoder-OSS-Instruct-75K,ULtraInteract_sft</span><br><span class="hljs-attr">template:</span> <span class="hljs-string">deepseekcoder</span><br><span class="hljs-attr">cutoff_len:</span> <span class="hljs-number">1024</span><br><span class="hljs-attr">max_samples:</span> <span class="hljs-number">1000</span><br><span class="hljs-attr">overwrite_cache:</span> <span class="hljs-literal">true</span><br><span class="hljs-attr">preprocessing_num_workers:</span> <span class="hljs-number">16</span><br></code></pre></td></tr></table></figure> 在这里，我使用了默认配置，<code>max_samples</code>设置成了1000，也就是对我所使用的每一个数据集，都仅仅使用了1000条数据，那么一共就使用了2000条数据而已，这速度当然没得说😂😂</p>
+<p>经过查找，是在<code>yaml</code>文件中的配置出了问题： <figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs yaml"><span class="hljs-comment">### dataset</span><br><span class="hljs-attr">dataset:</span> <span class="hljs-string">Magicoder-OSS-Instruct-75K,ULtraInteract_sft</span><br><span class="hljs-attr">template:</span> <span class="hljs-string">deepseekcoder</span><br><span class="hljs-attr">cutoff_len:</span> <span class="hljs-number">1024</span><br><span class="hljs-attr">max_samples:</span> <span class="hljs-number">1000</span><br><span class="hljs-attr">overwrite_cache:</span> <span class="hljs-literal">true</span><br><span class="hljs-attr">preprocessing_num_workers:</span> <span class="hljs-number">16</span><br></code></pre></td></tr></table></figure>
+在这里，我使用了默认配置，<code>max_samples</code>设置成了1000，也就是对我所使用的每一个数据集，都仅仅使用了1000条数据，那么一共就使用了2000条数据而已，这速度当然没得说😂😂</p>
 <p>理解下这些小项的意思：</p>
 <ul>
-<li><code>template</code>: 指代数据处理时一种特殊的格式，决定了如何把原始数据转换为模型可以接受的输入格式，包括一些special tokens等，根据<a target="_blank" rel="noopener" href="https://github.com/hiyouga/LLaMA-Factory#supported-models">supported-models</a>找到自己模型对应的template，当然也可以在<code>template.py</code>中定义自己的template。</li>
-<li><code>cutoff_len</code>: 定义文本最大长度是多少<strong>token</strong>，如果超过这个长度将会被截断（切记是token而不是词语数量）</li>
-<li><code>max_samples</code>: 指在训练过程中最多使用的样本数（但在实际操作中发现其实是对每一个数据集所摘取的最大样本数）</li>
-<li><code>overwrite_cache</code>: 是否覆盖之前的数据处理缓存。如果设置为 <code>true</code>，则在处理数据时会重新生成缓存，不使用之前生成的缓存。</li>
-<li><code>preprocessing_num_workers</code>: 数据预处理时使用的工作线程数，默认指定为 16 个并行的处理线程。</li>
+<li><code>template</code>:
+指代数据处理时一种特殊的格式，决定了如何把原始数据转换为模型可以接受的输入格式，包括一些special
+tokens等，根据<a
+target="_blank" rel="noopener" href="https://github.com/hiyouga/LLaMA-Factory#supported-models">supported-models</a>找到自己模型对应的template，当然也可以在<code>template.py</code>中定义自己的template。</li>
+<li><code>cutoff_len</code>:
+定义文本最大长度是多少<strong>token</strong>，如果超过这个长度将会被截断（切记是token而不是词语数量）</li>
+<li><code>max_samples</code>:
+指在训练过程中最多使用的样本数（但在实际操作中发现其实是对每一个数据集所摘取的最大样本数）</li>
+<li><code>overwrite_cache</code>: 是否覆盖之前的数据处理缓存。如果设置为
+<code>true</code>，则在处理数据时会重新生成缓存，不使用之前生成的缓存。</li>
+<li><code>preprocessing_num_workers</code>:
+数据预处理时使用的工作线程数，默认指定为 16 个并行的处理线程。</li>
 </ul>
 <figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs yaml"><span class="hljs-comment">### output</span><br><span class="hljs-attr">output_dir:</span> <span class="hljs-string">/data1/magicoder_ultraInteract_sft</span><br><span class="hljs-attr">logging_steps:</span> <span class="hljs-number">10</span><br><span class="hljs-attr">save_steps:</span> <span class="hljs-number">500</span><br><span class="hljs-attr">plot_loss:</span> <span class="hljs-literal">true</span><br><span class="hljs-attr">overwrite_output_dir:</span> <span class="hljs-literal">true</span><br></code></pre></td></tr></table></figure>
 <ul>
-<li><code>logging_steps</code>: 每隔10步记录一次日志信息，在log中体现如下： <img src="https://ice.frostsky.com/2024/10/19/1ce14a4e366bae0bdc8678e731e0a863.png" srcset="/img/loading.gif" lazyload alt="每十条挤在一起的日志" /></li>
-<li><code>save_steps</code>: 每隔500步保存一下模型的checkpoint，那如果你的总共的step大于500，就会生成<code>checkpoint-500</code>,<code>checkpoint-1000</code>这样的文件夹，如果小于500，也会成成一个<code>checkpoint-步数</code>的文件夹，其实最终结果会保存两次。</li>
+<li><code>logging_steps</code>:
+每隔10步记录一次日志信息，在log中体现如下： <img
+src="https://ice.frostsky.com/2024/10/19/1ce14a4e366bae0bdc8678e731e0a863.png" srcset="/img/loading.gif" lazyload
+alt="每十条挤在一起的日志" /></li>
+<li><code>save_steps</code>:
+每隔500步保存一下模型的checkpoint，那如果你的总共的step大于500，就会生成<code>checkpoint-500</code>,<code>checkpoint-1000</code>这样的文件夹，如果小于500，也会成成一个<code>checkpoint-步数</code>的文件夹，其实最终结果会保存两次。</li>
 </ul>
 <figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs yaml"><span class="hljs-comment">### train</span><br><span class="hljs-attr">per_device_train_batch_size:</span> <span class="hljs-number">1</span><br><span class="hljs-attr">gradient_accumulation_steps:</span> <span class="hljs-number">8</span><br><span class="hljs-attr">learning_rate:</span> <span class="hljs-number">1.0e-4</span><br><span class="hljs-attr">num_train_epochs:</span> <span class="hljs-number">1</span><br><span class="hljs-attr">lr_scheduler_type:</span> <span class="hljs-string">cosine</span><br><span class="hljs-attr">warmup_ratio:</span> <span class="hljs-number">0.1</span><br><span class="hljs-attr">bf16:</span> <span class="hljs-literal">true</span><br><span class="hljs-attr">ddp_timeout:</span> <span class="hljs-number">180000000</span><br></code></pre></td></tr></table></figure>
 <ul>
-<li><code>per_device_train_batch_size</code>: 每个设备上一次处理的样本数量，称为<strong>批量大小</strong>。它决定了每次训练时每个设备上处理多少条数据。</li>
-<li><code>gradient_accumulation_steps</code>: 模型在进行权重值的更新之前会累计8次的梯度。也就是说，经过8个批次的数据后模型才会更新模型的权重。</li>
-<li><code>num_train_epochs</code>: 表示数据集被完整训练一次。每个<code>epoch</code>代表模型对整个训练数据集的完整处理。更多的<code>epoch</code>通常意味着更充分的训练，但过多的<code>epoch</code>可能导致<strong>过拟合</strong></li>
-<li><code>lr_scheduler_type</code>: 学习率调度器类型，在这里指定使用<strong>余弦退火调度（cosine learning rate scheduler）</strong>，当然也有其他的学习率调度方式。在整个训练过程中，学习率会先快速下降，然后以更平缓的速度逐渐减少（类似于余弦函数1/4的下降趋势）。</li>
-<li><code>warmup_ratio</code>: 学习率的预热比例，表示在训练开始时，前10%的训练步骤用于从0逐渐增大学习率到设定的值。学习率预热有助于稳定训练的早期阶段，避免学习率太大使得模型更新过快。<a target="_blank" rel="noopener" href="https://www.baeldung.com/cs/learning-rate-warm-up">这篇文章</a>讲的不错~ <img src="https://www.baeldung.com/wp-content/uploads/sites/4/2023/03/lr-schedule.png" srcset="/img/loading.gif" lazyload alt="lr-schedule.png" /></li>
+<li><code>per_device_train_batch_size</code>:
+每个设备上一次处理的样本数量，称为<strong>批量大小</strong>。它决定了每次训练时每个设备上处理多少条数据。</li>
+<li><code>gradient_accumulation_steps</code>:
+模型在进行权重值的更新之前会累计8次的梯度。也就是说，经过8个批次的数据后模型才会更新模型的权重。</li>
+<li><code>num_train_epochs</code>:
+表示数据集被完整训练一次。每个<code>epoch</code>代表模型对整个训练数据集的完整处理。更多的<code>epoch</code>通常意味着更充分的训练，但过多的<code>epoch</code>可能导致<strong>过拟合</strong></li>
+<li><code>lr_scheduler_type</code>:
+学习率调度器类型，在这里指定使用<strong>余弦退火调度（cosine learning
+rate
+scheduler）</strong>，当然也有其他的学习率调度方式。在整个训练过程中，学习率会先快速下降，然后以更平缓的速度逐渐减少（类似于余弦函数1/4的下降趋势）。</li>
+<li><code>warmup_ratio</code>:
+学习率的预热比例，表示在训练开始时，前10%的训练步骤用于从0逐渐增大学习率到设定的值。学习率预热有助于稳定训练的早期阶段，避免学习率太大使得模型更新过快。<a
+target="_blank" rel="noopener" href="https://www.baeldung.com/cs/learning-rate-warm-up">这篇文章</a>讲的不错~
+<img
+src="https://www.baeldung.com/wp-content/uploads/sites/4/2023/03/lr-schedule.png" srcset="/img/loading.gif" lazyload
+alt="lr-schedule.png" /></li>
 </ul>
 <figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs yaml"><span class="hljs-comment">### eval</span><br><span class="hljs-attr">val_size:</span> <span class="hljs-number">0.1</span><br><span class="hljs-attr">per_device_eval_batch_size:</span> <span class="hljs-number">1</span><br><span class="hljs-attr">eval_strategy:</span> <span class="hljs-string">steps</span><br><span class="hljs-attr">eval_steps:</span> <span class="hljs-number">500</span><br></code></pre></td></tr></table></figure>
 <ul>
-<li><code>val_size</code>: 验证集的比例，表示从整个数据集中抽取 10% 作为验证集（validation set）。</li>
-<li><code>per_device_eval_batch_size</code>: 每个设备用于评估时处理的样本数量。</li>
-<li><code>eval_strategy</code>: 评估策略，表示评估是在训练过程中的<strong>固定步数</strong>之后进行（而不是每个epoch结束时）。</li>
-<li><code>eval_steps</code>: 如果选择了按步评估策略(<code>eval_strategy: steps</code>)，eval_steps决定了评估的频率。这个数值可以调节评估频次，较小的数值会更频繁地评估模型，但也会占用更多的时间，在本例中，如果总步数未达到500步，那么就在训练结束之后评估。</li>
+<li><code>val_size</code>: 验证集的比例，表示从整个数据集中抽取 10%
+作为验证集（validation set）。</li>
+<li><code>per_device_eval_batch_size</code>:
+每个设备用于评估时处理的样本数量。</li>
+<li><code>eval_strategy</code>:
+评估策略，表示评估是在训练过程中的<strong>固定步数</strong>之后进行（而不是每个epoch结束时）。</li>
+<li><code>eval_steps</code>:
+如果选择了按步评估策略(<code>eval_strategy: steps</code>)，eval_steps决定了评估的频率。这个数值可以调节评估频次，较小的数值会更频繁地评估模型，但也会占用更多的时间，在本例中，如果总步数未达到500步，那么就在训练结束之后评估。</li>
 </ul>
 
                 
