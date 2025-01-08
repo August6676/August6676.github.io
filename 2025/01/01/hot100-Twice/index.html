@@ -28,7 +28,7 @@
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://repository-images.githubusercontent.com/325182029/77934a80-97d2-11eb-8ed0-60343162ddfe">
 <meta property="article:published_time" content="2025-01-01T07:10:22.000Z">
-<meta property="article:modified_time" content="2025-01-06T03:32:52.410Z">
+<meta property="article:modified_time" content="2025-01-08T11:13:11.397Z">
 <meta property="article:author" content="Xiaoxuan Zhou">
 <meta property="article:tag" content="cpp">
 <meta name="twitter:card" content="summary_large_image">
@@ -254,7 +254,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          1.3k 字
+          1.4k 字
         
       </span>
     
@@ -265,7 +265,7 @@
         
         
         
-          11 分钟
+          13 分钟
         
       </span>
     
@@ -316,7 +316,7 @@
               <p id="updated-time" class="note note-info" style="display: none">
                 
                   
-                    本文最后更新于 2025-01-06T11:32:52+08:00
+                    本文最后更新于 2025-01-08T19:13:11+08:00
                   
                   
 
@@ -363,6 +363,13 @@ nums[k] == 0 。请你返回所有和为 0 且不重复的三元组。</p>
 <div class="note note-primary">
             <p>记得还有类似的题，等做到再拿出来看一看，一时想不起来了💭💭</p>
           </div> <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-function"><span class="hljs-type">bool</span> <span class="hljs-title">searchMatrix</span><span class="hljs-params">(vector&lt;vector&lt;<span class="hljs-type">int</span>&gt;&gt;&amp; matrix, <span class="hljs-type">int</span> target)</span> </span>&#123;<br>       <span class="hljs-comment">// 从矩阵的右上角开始搜索 这时候所有大于他的都在下面 所有小于他的都在左面</span><br>       <span class="hljs-keyword">if</span> (matrix.<span class="hljs-built_in">empty</span>()|| matrix[<span class="hljs-number">0</span>].<span class="hljs-built_in">empty</span>()) <span class="hljs-keyword">return</span> <span class="hljs-literal">false</span>; <span class="hljs-comment">// 空的</span><br>       <br>       <span class="hljs-type">int</span> rows = matrix.<span class="hljs-built_in">size</span>();<br>       <span class="hljs-type">int</span> cols = matrix[<span class="hljs-number">0</span>].<span class="hljs-built_in">size</span>();<br>       <span class="hljs-type">int</span> row = <span class="hljs-number">0</span>,col = cols - <span class="hljs-number">1</span>;<br><br>       <span class="hljs-keyword">while</span> (row &lt; rows &amp;&amp; col &gt;= <span class="hljs-number">0</span>) &#123;<br>           <span class="hljs-keyword">if</span> (matrix[row][col] == target) <span class="hljs-keyword">return</span> <span class="hljs-literal">true</span>;<br>           <span class="hljs-keyword">if</span> (matrix[row][col] &gt; target) col--;<br>           <span class="hljs-keyword">else</span> row++;<br>       &#125;<br>       <span class="hljs-keyword">return</span> <span class="hljs-literal">false</span>;<br>   &#125;<br></code></pre></td></tr></table></figure></p>
+<h3 id="反转链表">206. 反转链表</h3>
+<blockquote>
+<p>给你单链表的头节点<code>head</code>，请你反转链表，并返回反转后的链表。</p>
+</blockquote>
+<p>哦莫，链表的题目总是容易出问题😭😭</p>
+<p>这次没AC的原因是，我想让prev指向head，这样第一次prev指针没有处理好，导致指针混乱，其实可以从prev为空的时候开始处理
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-function">ListNode* <span class="hljs-title">reverseList</span><span class="hljs-params">(ListNode* head)</span> </span>&#123;<br>    <span class="hljs-keyword">if</span> (head == <span class="hljs-literal">nullptr</span> || head-&gt;next == <span class="hljs-literal">nullptr</span>) <span class="hljs-keyword">return</span> head;<br>    ListNode* prev = <span class="hljs-literal">nullptr</span>; <span class="hljs-comment">// 前一个节点</span><br>    ListNode* curr = head; <span class="hljs-comment">// 头节点</span><br>    <br>    <span class="hljs-keyword">while</span> (curr != <span class="hljs-literal">nullptr</span>) &#123; <span class="hljs-comment">// 处理到最后 curr正好变为空</span><br>        ListNode* temp = curr-&gt;next; <span class="hljs-comment">// 记录当前的下一个节点</span><br>        curr-&gt;next = prev;<br>        prev = curr;<br>        curr = temp;<br>    &#125;<br>    <br>    <span class="hljs-keyword">return</span> prev; <span class="hljs-comment">// 这是prev指向最后一个节点</span><br>&#125;<br></code></pre></td></tr></table></figure></p>
 
                 
               </div>
