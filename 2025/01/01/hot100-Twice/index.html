@@ -28,7 +28,7 @@
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://repository-images.githubusercontent.com/325182029/77934a80-97d2-11eb-8ed0-60343162ddfe">
 <meta property="article:published_time" content="2025-01-01T07:10:22.000Z">
-<meta property="article:modified_time" content="2025-01-17T13:15:54.849Z">
+<meta property="article:modified_time" content="2025-01-18T05:24:55.984Z">
 <meta property="article:author" content="Xiaoxuan Zhou">
 <meta property="article:tag" content="cpp">
 <meta name="twitter:card" content="summary_large_image">
@@ -254,7 +254,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          1.9k 字
+          2.2k 字
         
       </span>
     
@@ -265,7 +265,7 @@
         
         
         
-          17 分钟
+          19 分钟
         
       </span>
     
@@ -316,7 +316,7 @@
               <p id="updated-time" class="note note-info" style="display: none">
                 
                   
-                    本文最后更新于 2025-01-17T21:15:54+08:00
+                    本文最后更新于 2025-01-18T13:24:55+08:00
                   
                   
 
@@ -391,6 +391,20 @@ alt="图解示意" />
 </blockquote>
 <p>思路其实还是从中间的节点出发，然后放置好左右节点，还是使用递归的方法。
 <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-function">TreeNode* <span class="hljs-title">sortedArrayToBST</span><span class="hljs-params">(vector&lt;<span class="hljs-type">int</span>&gt;&amp; nums)</span> </span>&#123;<br>    <span class="hljs-keyword">return</span> <span class="hljs-built_in">sortedArrayToBSTHelper</span>(nums,<span class="hljs-number">0</span>,nums.<span class="hljs-built_in">size</span>() - <span class="hljs-number">1</span>);<br>&#125;<br><br><span class="hljs-function">TreeNode* <span class="hljs-title">sortedArrayToBSTHelper</span><span class="hljs-params">(<span class="hljs-type">const</span> vector&lt;<span class="hljs-type">int</span>&gt;&amp; nums,<span class="hljs-type">int</span> left,<span class="hljs-type">int</span> right)</span> </span>&#123;<br>    <span class="hljs-keyword">if</span> (left &gt; right) <span class="hljs-keyword">return</span> <span class="hljs-literal">nullptr</span>;<br>    <span class="hljs-type">int</span> mid = left + (right - left) / <span class="hljs-number">2</span>;<br>    <br>    TreeNode* root = <span class="hljs-keyword">new</span> <span class="hljs-built_in">TreeNode</span>(mid);<br>    root-&gt;left = <span class="hljs-built_in">sortedArrayToBSTHelper</span>(nums,left,mid - <span class="hljs-number">1</span>);<br>    root-&gt;right = <span class="hljs-built_in">sortedArrayToBSTHelper</span>(nums,mid + <span class="hljs-number">1</span>,right);<br>    <br>    <span class="hljs-keyword">return</span> root;<br>&#125;<br></code></pre></td></tr></table></figure></p>
+<h3 id="从前序与中序遍历序列构造二叉树">105.
+从前序与中序遍历序列构造二叉树</h3>
+<blockquote>
+<p>给定两个整数数组<code>preorder</code>和<code>inorder</code>，其中<code>preorder</code>是二叉树的先序遍历，<code>inorder</code>是同一棵树的中序遍历，请构造二叉树并返回其根节点。</p>
+</blockquote>
+<div class="note note-warning">
+            <p>二叉树的题目，卡壳的几率会比较大一些！递归经常想到但是实现困难🤨🤨</p>
+          </div>
+<p>这题其实就是利用前序
+中序遍历的规律，结合哈希表存储来解答，实现逻辑和<a
+href="https://august6676.github.io/2025/01/01/hot100-Twice/#%E5%B0%86%E6%9C%89%E5%BA%8F%E6%95%B0%E7%BB%84%E8%BD%AC%E6%8D%A2%E4%B8%BA%E4%BA%8C%E5%8F%89%E6%90%9C%E7%B4%A2%E6%A0%91">108.
+将有序数组转换为二叉搜索树</a>
+其实类似，中间有一个<code>preIndex</code>需要使用引用传递，有点小绕。
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-function">TreeNode* <span class="hljs-title">buildTree</span><span class="hljs-params">(vector&lt;<span class="hljs-type">int</span>&gt;&amp; preorder, vector&lt;<span class="hljs-type">int</span>&gt;&amp; inorder)</span> </span>&#123;<br>    unordered_map&lt;<span class="hljs-type">int</span>,<span class="hljs-type">int</span>&gt; inMap;<br>    <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> i = <span class="hljs-number">0</span>; i &lt; inorder.<span class="hljs-built_in">size</span>();i++) <br>        inMap[inorder[i]] = i;<br>    <span class="hljs-type">int</span> preIndex = <span class="hljs-number">0</span>;<br>    <span class="hljs-keyword">return</span> <span class="hljs-built_in">build</span>(preorder,inorder,preIndex,<span class="hljs-number">0</span>,inorder.<span class="hljs-built_in">size</span>() - <span class="hljs-number">1</span>,inMap);<br>&#125;<br><br><span class="hljs-function">TreeNode* <span class="hljs-title">build</span><span class="hljs-params">(vector&lt;<span class="hljs-type">int</span>&gt;&amp; preorder,vector&lt;<span class="hljs-type">int</span>&gt;&amp; inorder,<span class="hljs-type">int</span>&amp; preIndex,<span class="hljs-type">int</span> inStart,<span class="hljs-type">int</span> inEnd,unordered_map&lt;<span class="hljs-type">int</span>,<span class="hljs-type">int</span>&gt;&amp; inMap)</span> </span>&#123;<br>    <span class="hljs-keyword">if</span> (inStart &gt; inEnd) <span class="hljs-keyword">return</span> <span class="hljs-literal">nullptr</span>;<br>    <br>    <span class="hljs-type">int</span> rootValue = preorder[preIndex];<br>    preIndex++;<br>    <br>    TreeNode* root = <span class="hljs-keyword">new</span> <span class="hljs-built_in">TreeNode</span>(rootValue);<br>    <span class="hljs-type">int</span> inIndex = inMap[rootValue];<br>    <br>    root-&gt;left = <span class="hljs-built_in">build</span>(preorder,inorder,preInedx,inStart,inIndex - <span class="hljs-number">1</span>,inMap);<br>    root-&gt;right = <span class="hljs-built_in">build</span>(preorder,inorder,preIndex,inIndex + <span class="hljs-number">1</span>,inEnd,inMap);<br>    <br>    <span class="hljs-keyword">return</span> root;<br>&#125;<br></code></pre></td></tr></table></figure></p>
 
                 
               </div>
