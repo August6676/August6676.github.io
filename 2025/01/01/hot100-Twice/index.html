@@ -28,7 +28,7 @@
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://repository-images.githubusercontent.com/325182029/77934a80-97d2-11eb-8ed0-60343162ddfe">
 <meta property="article:published_time" content="2025-01-01T07:10:22.000Z">
-<meta property="article:modified_time" content="2025-01-18T05:24:55.984Z">
+<meta property="article:modified_time" content="2025-01-19T08:05:20.632Z">
 <meta property="article:author" content="Xiaoxuan Zhou">
 <meta property="article:tag" content="cpp">
 <meta name="twitter:card" content="summary_large_image">
@@ -254,7 +254,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          2.2k 字
+          2.4k 字
         
       </span>
     
@@ -265,7 +265,7 @@
         
         
         
-          19 分钟
+          20 分钟
         
       </span>
     
@@ -316,7 +316,7 @@
               <p id="updated-time" class="note note-info" style="display: none">
                 
                   
-                    本文最后更新于 2025-01-18T13:24:55+08:00
+                    本文最后更新于 2025-01-19T16:05:20+08:00
                   
                   
 
@@ -405,6 +405,13 @@ href="https://august6676.github.io/2025/01/01/hot100-Twice/#%E5%B0%86%E6%9C%89%E
 将有序数组转换为二叉搜索树</a>
 其实类似，中间有一个<code>preIndex</code>需要使用引用传递，有点小绕。
 <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-function">TreeNode* <span class="hljs-title">buildTree</span><span class="hljs-params">(vector&lt;<span class="hljs-type">int</span>&gt;&amp; preorder, vector&lt;<span class="hljs-type">int</span>&gt;&amp; inorder)</span> </span>&#123;<br>    unordered_map&lt;<span class="hljs-type">int</span>,<span class="hljs-type">int</span>&gt; inMap;<br>    <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> i = <span class="hljs-number">0</span>; i &lt; inorder.<span class="hljs-built_in">size</span>();i++) <br>        inMap[inorder[i]] = i;<br>    <span class="hljs-type">int</span> preIndex = <span class="hljs-number">0</span>;<br>    <span class="hljs-keyword">return</span> <span class="hljs-built_in">build</span>(preorder,inorder,preIndex,<span class="hljs-number">0</span>,inorder.<span class="hljs-built_in">size</span>() - <span class="hljs-number">1</span>,inMap);<br>&#125;<br><br><span class="hljs-function">TreeNode* <span class="hljs-title">build</span><span class="hljs-params">(vector&lt;<span class="hljs-type">int</span>&gt;&amp; preorder,vector&lt;<span class="hljs-type">int</span>&gt;&amp; inorder,<span class="hljs-type">int</span>&amp; preIndex,<span class="hljs-type">int</span> inStart,<span class="hljs-type">int</span> inEnd,unordered_map&lt;<span class="hljs-type">int</span>,<span class="hljs-type">int</span>&gt;&amp; inMap)</span> </span>&#123;<br>    <span class="hljs-keyword">if</span> (inStart &gt; inEnd) <span class="hljs-keyword">return</span> <span class="hljs-literal">nullptr</span>;<br>    <br>    <span class="hljs-type">int</span> rootValue = preorder[preIndex];<br>    preIndex++;<br>    <br>    TreeNode* root = <span class="hljs-keyword">new</span> <span class="hljs-built_in">TreeNode</span>(rootValue);<br>    <span class="hljs-type">int</span> inIndex = inMap[rootValue];<br>    <br>    root-&gt;left = <span class="hljs-built_in">build</span>(preorder,inorder,preInedx,inStart,inIndex - <span class="hljs-number">1</span>,inMap);<br>    root-&gt;right = <span class="hljs-built_in">build</span>(preorder,inorder,preIndex,inIndex + <span class="hljs-number">1</span>,inEnd,inMap);<br>    <br>    <span class="hljs-keyword">return</span> root;<br>&#125;<br></code></pre></td></tr></table></figure></p>
+<h3 id="路径总和-iii">437. 路径总和 III</h3>
+<blockquote>
+<p>给定一个二叉树的根节点<code>root</code>，和一个整数<code>targetSum</code>，求该二叉树里节点值之和等于<code>targetSum</code>的路径的数目。
+路径不需要从根节点开始，也不需要在叶子节点结束，但是路径方向必须是向下的（只能从父节点到子节点）。</p>
+</blockquote>
+<p>两个递归在，一个保证以任何节点为起点，一个从任何节点找到路径。</p>
+<p>二叉树卡住不少了QAQ <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-type">int</span> count = <span class="hljs-number">0</span>;<br><span class="hljs-function"><span class="hljs-type">int</span> <span class="hljs-title">pathSum</span><span class="hljs-params">(TreeNode* root, <span class="hljs-type">int</span> targetSum)</span> </span>&#123;<br>    <span class="hljs-keyword">if</span> (root == <span class="hljs-literal">nullptr</span>) <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;<br>    <span class="hljs-built_in">dfs</span>(root,targetSum);<br>    <br>    <span class="hljs-built_in">pathSum</span>(root-&gt;left,targetSum);<br>    <span class="hljs-built_in">pathSum</span>(root-&gt;right,targetSum);<br>    <br>    <span class="hljs-keyword">return</span> count;<br>&#125;<br><br><span class="hljs-function"><span class="hljs-type">void</span> <span class="hljs-title">dfs</span><span class="hljs-params">(TreeNode* root,<span class="hljs-type">int</span> targetSum)</span> </span>&#123;<br>    <span class="hljs-keyword">if</span> (root == <span class="hljs-literal">nullptr</span>) <span class="hljs-keyword">return</span>;<br>    <span class="hljs-keyword">if</span> (root-&gt;val == targetSum) count++;<br>    <br>    <span class="hljs-built_in">dfs</span>(root-&gt;left,targetSum - root-&gt;val);<br>    <span class="hljs-built_in">dfs</span>(root-&gt;right,targetSum - root-&gt;val);<br>&#125;<br></code></pre></td></tr></table></figure></p>
 
                 
               </div>
